@@ -15,3 +15,6 @@
 2026-10-08 - Las acciones de un pilar sin nombre quedan bloqueadas en la grilla. Motivo: respetar el orden del método (primero el pilar, después sus acciones).
 2026-10-08 - El texto largo se corta en la casilla; se ve completo al pasar el mouse y en el panel. Motivo: mantener la grilla estable y legible.
 2026-10-08 - Pestañas renombradas: "Hoy" pasa a "Tus tareas para hoy" y "Resumen y PDF" a "Mi avance". El progreso general va como barra en el encabezado, no como pestaña. Motivo: nombres más claros para el lector y evitar una pestaña que repita "Mi avance".
+2026-10-08 - Vaciar un pilar borra solo su nombre: sus acciones y tareas se conservan atenuadas y de solo lectura hasta que el pilar vuelva a tener nombre. Motivo: no perder trabajo por un borrado del pilar.
+2026-10-08 - El panel de una acción bloqueada muestra "Primero escribí el pilar" con un botón al pilar, en lugar de saltearla en anterior y siguiente. Motivo: que la navegación sea predecible y explique por qué no se puede editar.
+2026-10-08 - Los paneles por casilla son pantallas dentro de la pestaña Mapa con entradas propias en el historial del navegador (con el id del tablero), no modales. Motivo: poder ir y volver con migas de pan, anterior y siguiente, y el botón "atrás".

@@ -10,6 +10,7 @@ Grilla
   - Dado un pilar, cuando escribo en una de sus dos apariciones (anillo central o centro de su bloque), entonces la otra se actualiza en el momento.
   - Dado un pilar sin texto, cuando miro sus 8 acciones, entonces se ven apagadas, no se pueden editar y un tooltip dice que primero hay que escribir el pilar.
   - Dado un pilar sin texto, cuando le escribo el nombre, entonces sus 8 acciones se habilitan en el momento, sin recargar la grilla.
+  - Dado un pilar con acciones escritas que se vacía, cuando miro sus acciones, entonces siguen visibles, atenuadas y de solo lectura (no se borran) hasta que el pilar vuelva a tener nombre.
   - Dado el foco en una casilla, cuando presiono Enter, entonces paso a la siguiente habilitada en orden horario dentro del bloque y, al terminar el bloque, al bloque del pilar siguiente (en celular cambia el bloque visible).
   - Dado el foco en una casilla, cuando presiono las flechas arriba o abajo, entonces paso a la casilla vecina; izquierda y derecha mueven el cursor y solo saltan de casilla en el borde del texto.
   - Dado el foco en una casilla, cuando presiono Esc, entonces salgo del texto y el foco queda en el botón de abrir panel.
@@ -31,7 +32,6 @@ Fuera de alcance / No tocar: contenido de los paneles por casilla (`panel-casill
 Dependencias: `cellAt`/`NEI`, `getText`/`setText`, `boardStats`, `isDue`, `tipHTML`, `gcs()` y `goalColor` (de `asistente.md`), `openDet` (de `panel-casilla.md`).
 Estados (UI): casilla vacía con "+"; acciones apagadas mientras el pilar no tiene nombre; sin fecha meta, la cifra dice "Sin fecha"; sin tareas para hoy, la pestaña no muestra número. Sin carga ni error (todo es local).
 Diseño: N/A (prototipo en la rama `explorar/onboarding`, commits 1218647, e0bc658, f21e3b3 y 81939ee).
-A CONFIRMAR: si un pilar con acciones escritas se vacía, sus acciones se ven atenuadas y de solo lectura (sin borrarse) hasta que el pilar vuelva a tener nombre. Es la propuesta, falta tu visto bueno.
 Definición de hecho: la del AGENTS.md, más:
   - En el ejemplo y en un tablero nuevo: escribir en la grilla, Enter, flechas, Esc, abrir el panel con el botón y con Ctrl+Enter.
   - Escribir el nombre de un pilar vacío y ver cómo se habilitan sus acciones sin perder el foco.
