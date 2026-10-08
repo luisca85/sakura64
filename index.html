@@ -298,8 +298,7 @@ th{font-size:13px;color:var(--muted)}
 .wbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
 .wiz{max-width:1080px}
 .wgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:32px;align-items:start}
-.wgrid.three{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
-@media (max-width:820px){.wgrid,.wgrid.three{grid-template-columns:minmax(0,1fr);gap:22px}}
+@media (max-width:820px){.wgrid{grid-template-columns:minmax(0,1fr);gap:22px}}
 .wstage{width:100%;max-width:min(540px,calc(100vh - 290px));min-width:280px}
 @media (max-width:820px){.wstage{max-width:100%;min-width:0}.wgoal{max-width:100%;min-width:0;aspect-ratio:4/3}.wc textarea{padding:14% 4px 4px;font-size:12px}}
 .wside{display:flex;flex-direction:column;gap:18px;min-width:0}
@@ -317,8 +316,6 @@ th{font-size:13px;color:var(--muted)}
 .sw[aria-checked="true"]{box-shadow:0 0 0 3px var(--ink)}
 .wside .examples{margin:0}
 .wblk{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:10px;border-radius:20px;background:var(--surface2);border:2px solid var(--pc)}
-.wblk-h{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
-.wblk-h h2{font-size:20px}
 .wc{position:relative;aspect-ratio:1/1;min-width:0;border-radius:13px;border:1.5px dashed color-mix(in srgb,var(--pc) 60%,var(--surface));background:var(--surface);display:flex;transition:background .2s,border-color .2s}
 .wc:focus-within{outline:3px solid var(--focus);outline-offset:1px;z-index:2}
 .wc textarea{flex:1;width:100%;min-width:0;border:0;background:transparent;resize:none;padding:22% 8px 6px;font:500 clamp(12px,1.45vw,15px)/1.25 var(--f-body);color:var(--ink);text-align:center;outline:none;overflow:hidden}
@@ -333,19 +330,6 @@ th{font-size:13px;color:var(--muted)}
 .wcount{font-size:16px;display:flex;align-items:center;gap:4px}
 .wcount b{font-family:var(--f-display);font-size:28px}
 .whelp{display:flex;flex-direction:column;gap:8px;color:var(--muted);font-size:14px;padding-left:18px;list-style:disc}
-.wmap-h{display:flex;align-items:center;gap:4px;margin-bottom:10px}
-.wmap-h h2{font-size:18px}
-.wmap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;max-width:420px}
-.wmb{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;padding:3px;aspect-ratio:1/1;border-radius:9px;background:var(--surface2);border:1.5px solid color-mix(in srgb,var(--pc) 35%,var(--line2))}
-button.wmb{cursor:pointer;transition:transform .15s}
-button.wmb:hover{border-color:var(--pc);transform:scale(1.03)}
-.wmb.cur{border:2.5px solid var(--pc);box-shadow:0 0 0 3px color-mix(in srgb,var(--pc) 28%,transparent)}
-.wmb.off{opacity:.4}
-.wmb.core{border:2px solid var(--ink)}
-.wmb i{border-radius:3px;background:var(--line2);min-height:0}
-.wmb i.g{background:var(--gc,var(--goal-bg))}
-.wmb i.p{background:var(--pc)}
-.wmb i.a{background:color-mix(in srgb,var(--pc) 45%,var(--surface))}
 .tipi{position:relative;display:inline-grid;place-items:center;flex:none;width:20px;height:20px;margin-left:6px;border-radius:50%;background:var(--line2);color:var(--muted);font:700 12px/1 var(--f-body);cursor:help;text-transform:none;letter-spacing:0;vertical-align:middle}
 .tipi::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:max-content;max-width:min(240px,70vw);background:var(--ink);color:var(--bg);padding:8px 10px;border-radius:8px;font:400 13px/1.35 var(--f-body);text-align:left;pointer-events:none;z-index:30;display:none}
 .tipi:hover::after,.tipi:focus::after{display:block}
@@ -952,33 +936,10 @@ function wcellHTML(cls,st,bind,id,val,ph,max,label){
     '<textarea class="wct" id="'+id+'" data-bind="'+bind+'" data-fid="'+id+'" maxlength="'+max+'" placeholder="'+esc(ph)+'">'+esc(val)+'</textarea></label>';
 }
 function wstaticHTML(cls,st,txt,title){return '<div class="wc static '+cls+'" style="'+st+'" title="'+esc(title)+'"><span>'+esc(txt)+'</span></div>';}
-function wizMapHTML(b,curK){
-  let h='<div class="wmap" id="wizMap">';
-  for(let br=0;br<3;br++)for(let bc=0;bc<3;bc++){
-    const core=br===1&&bc===1,k=core?-1:NEI.findIndex(p=>p[0]===br&&p[1]===bc);
-    let cells='';
-    for(let lr=0;lr<3;lr++)for(let lc=0;lc<3;lc++){
-      const x=cellAt(br*3+lr,bc*3+lc);let cls='',txt='';
-      if(x.t==='goal'){txt=b.goal;cls='g';}
-      else if(x.t==='pillar'){txt=b.pillars[x.k];cls=txt.trim()?'p':'';}
-      else{txt=b.actions[x.k][x.i].t;cls=txt.trim()?'a':'';}
-      cells+='<i'+(cls?' class="'+cls+'"':'')+(x.t==='goal'?'':' style="--pc:'+pcv(x.k)+'"')+(txt.trim()?' title="'+esc(txt)+'"':'')+'></i>';
-    }
-    if(!core&&b.pillars[k].trim())
-      h+='<button type="button" class="wmb'+(k===curK?' cur':'')+'" style="--pc:'+pcv(k)+'" data-act="wiz-pillar" data-k="'+k+'" data-fid="wm-'+k+'" aria-pressed="'+(k===curK)+'" aria-label="Trabajar el pilar '+(k+1)+': '+esc(b.pillars[k])+'">'+cells+'</button>';
-    else h+='<div class="wmb'+(core?' core':' off')+'" style="--pc:'+(core?'var(--ink)':pcv(k))+(core?';'+gcs(b):'')+'" aria-hidden="true">'+cells+'</div>';
-  }
-  return h+'</div>';
-}
-function wizCounts(b){
-  const pc=b.pillars.filter(p=>p.trim()).length;
-  let ac=0;b.actions.forEach((r,k)=>{if(b.pillars[k].trim())r.forEach(a=>{if(a.t.trim())ac++;});});
-  const kc=S.wiz?b.actions[S.wiz.k].filter(a=>a.t.trim()).length:0;
-  return {pc:pc,ac:ac,kc:kc,max:pc*8};
-}
+function wizCounts(b){return {pc:b.pillars.filter(p=>p.trim()).length};}
 function wizHTML(){
   const b=cur(),w=S.wiz,n=wizCounts(b);
-  const steps=['Objetivo','Pilares','Acciones'];
+  const steps=['Objetivo','Pilares'];
   let h='<section class="wrap wiz"><div class="wsteps" aria-label="Pasos para crear tu tablero">'+steps.map((s,i)=>'<span class="wst'+(w.step===i+1?' cur':'')+'"'+(w.step===i+1?' aria-current="step"':'')+'><b>'+(i+1)+'</b>'+s+'</span>').join('')+'</div>';
   if(w.step===1){
     h+='<h1>Escribí tu objetivo ambicioso</h1><p class="lead">Este bloque es el corazón de tu tablero. Elegí una meta que hoy te dé un poco de vértigo: qué querés lograr y para cuándo.</p>'+
@@ -995,7 +956,7 @@ function wizHTML(){
         '<input type="date" id="w-date" data-bind="goalDate" data-fid="w-date" value="'+esc(b.goalDate)+'"><p class="note" id="goal-count">'+esc(b.goalDate?countdown(b.goalDate):'')+'</p></div>'+
       '</div></div>'+
       '<div class="wbtns"><button class="btn ghost" data-act="wiz-cancel" data-fid="w-cancel">Cancelar</button><button class="btn primary" data-act="wiz-next" data-fid="w-next"'+(b.goal.trim()?'':' disabled')+'>Siguiente: definir pilares</button></div>';
-  }else if(w.step===2){
+  }else{
     let cells='';
     for(let lr=0;lr<3;lr++)for(let lc=0;lc<3;lc++){
       if(lr===1&&lc===1){cells+=wstaticHTML('g',gcs(b),b.goal,'Tu objetivo');continue;}
@@ -1006,25 +967,7 @@ function wizHTML(){
       '<div class="wgrid"><div class="wstage"><div class="wblk" style="--pc:var(--ink)">'+cells+'</div></div>'+
       '<div class="wside"><p class="wcount"><b id="w-pcount">'+n.pc+'</b> de 8 pilares'+tipHTML('Con un pilar ya podés avanzar. Los que dejes vacíos los completás después desde el mapa.')+'</p>'+
       '<ul class="whelp"><li>Escribí directo en cada casilla. Los textos grises son ideas, no se guardan.</li><li>Cada pilar tiene su color y lo va a mantener en todo el tablero.</li><li>Usá frases cortas: hasta 60 caracteres.</li></ul></div></div>'+
-      '<div class="wbtns"><button class="btn" data-act="wiz-back" data-fid="w-back">Atrás</button><button class="btn primary" data-act="wiz-next" data-fid="w-next"'+(n.pc?'':' disabled')+'>Siguiente: ver el tablero completo</button></div>';
-  }else{
-    const ks=[];b.pillars.forEach((p,k)=>{if(p.trim())ks.push(k);});
-    if(ks.indexOf(w.k)<0)w.k=ks[0]||0;
-    const last=ks.indexOf(w.k)===ks.length-1;
-    let cells='';
-    for(let lr=0;lr<3;lr++)for(let lc=0;lc<3;lc++){
-      if(lr===1&&lc===1){cells+=wstaticHTML('ps','--pc:'+pcv(w.k),b.pillars[w.k],'Pilar '+(w.k+1));continue;}
-      const i=NEI.findIndex(p=>p[0]===lr&&p[1]===lc);
-      cells+=wcellHTML('act','--pc:'+pcv(w.k),'action:'+w.k+':'+i,'w-a'+i,b.actions[w.k][i].t,'Acción '+(i+1),80,'Acción '+(i+1));
-    }
-    h+='<h1>Así queda tu tablero: armá las acciones</h1><p class="lead">Cada pilar se abre en 8 acciones chicas y concretas, de las que podés hacer esta semana. Podés dejar casillas vacías y completarlas más tarde.</p>'+
-      '<div class="wgrid three"><div class="wstage"><div class="wblk-h"><span class="dot" style="--pc:'+pcv(w.k)+'"></span><h2>Pilar '+(w.k+1)+'</h2><span class="note" id="w-kcount">'+n.kc+' de 8 acciones</span>'+tipHTML('El pilar queda en el centro y sus acciones lo rodean, igual que tu objetivo con sus pilares.')+'</div>'+
-      '<div class="wblk" style="--pc:'+pcv(w.k)+'">'+cells+'</div></div>'+
-      '<div class="wside"><div class="wmap-h"><h2>Tu tablero completo</h2>'+tipHTML('Tocá un bloque de color para trabajar ese pilar. Las casillas que se pintan ya tienen acción.')+'</div>'+
-      wizMapHTML(b,w.k)+'<p class="note" style="margin-top:10px"><b id="w-acount">'+n.ac+'</b> de '+n.max+' acciones definidas</p></div></div>'+
-      '<div class="wbtns"><button class="btn" data-act="wiz-back" data-fid="w-back">Atrás</button>'+
-      (last?'':'<button class="btn" data-act="wiz-nextp" data-fid="w-nextp">Siguiente pilar</button>')+
-      '<button class="btn primary" data-act="wiz-finish" data-fid="w-finish">Terminar y abrir el tablero</button></div>';
+      '<div class="wbtns"><button class="btn" data-act="wiz-back" data-fid="w-back">Atrás</button><button class="btn primary" data-act="wiz-finish" data-fid="w-finish"'+(n.pc?'':' disabled')+'>Terminar y ver el tablero completo</button></div>';
   }
   return h+'</section>';
 }
@@ -1032,9 +975,8 @@ function wizSync(el){
   if(el){const wc=el.closest&&el.closest('.wc');if(wc)wc.classList.toggle('filled',!!el.value.trim());}
   const b=cur();if(!b||S.view!=='wiz')return;
   const n=wizCounts(b),set=(s,v)=>{const x=$(s);if(x)x.textContent=v;};
-  set('#w-goal-n',b.goal.length+' de 140');set('#w-pcount',n.pc);set('#w-kcount',n.kc+' de 8 acciones');set('#w-acount',n.ac);
-  const m=$('#wizMap');if(m)m.outerHTML=wizMapHTML(b,S.wiz.k);
-  const btn=$('[data-act="wiz-next"]');if(btn)btn.disabled=S.wiz.step===1?!b.goal.trim():!n.pc;
+  set('#w-goal-n',b.goal.length+' de 140');set('#w-pcount',n.pc);
+  const btn=$('[data-act="wiz-next"],[data-act="wiz-finish"]');if(btn)btn.disabled=S.wiz.step===1?!b.goal.trim():!n.pc;
 }
 
 /* onboarding */
@@ -1274,7 +1216,7 @@ const A={
   'onb-example'(){markSeen();openBoard('ejemplo');},
   theme(){const r=document.documentElement;r.dataset.theme=isDark()?'light':'dark';render();},
   new(){
-    const b=blankBoard();S.boards.push(b);S.boardId=b.id;S.view='wiz';S.wiz={step:1,k:0};
+    const b=blankBoard();S.boards.push(b);S.boardId=b.id;S.view='wiz';S.wiz={step:1};
     render({top:true});focusSoon('#w-goal');
   },
   open(el){openBoard(el.dataset.id);},
@@ -1350,27 +1292,14 @@ const A={
   },
   'wiz-next'(){
     const b=cur();
-    if(S.wiz.step===1&&!b.goal.trim())return;
-    if(S.wiz.step===2){if(!b.pillars.some(p=>p.trim()))return;S.wiz.k=b.pillars.findIndex(p=>p.trim());}
-    S.wiz.step++;render({top:true});focusSoon(S.wiz.step===2?'#w-p0':'#w-a0');
+    if(S.wiz.step!==1||!b.goal.trim())return;
+    S.wiz.step=2;render({top:true});focusSoon('#w-p0');
   },
   'wiz-back'(){
-    const w=S.wiz,b=cur();
-    if(w.step===3){
-      const ks=[];b.pillars.forEach((p,k)=>{if(p.trim())ks.push(k);});
-      const i=ks.indexOf(w.k);
-      if(i>0){w.k=ks[i-1];render({top:true});focusSoon('#w-a0');return;}
-    }
-    w.step--;render({top:true});
+    S.wiz.step=1;render({top:true});
   },
-  'wiz-pillar'(el){S.wiz.k=+el.dataset.k;render();focusSoon('#w-a0');},
   'wiz-color'(el){const b=cur();if(!b)return;b.goalColor=el.dataset.v;save();render();},
-  'wiz-nextp'(){
-    const b=cur(),w=S.wiz,ks=[];b.pillars.forEach((p,k)=>{if(p.trim())ks.push(k);});
-    const i=ks.indexOf(w.k);if(i<ks.length-1)w.k=ks[i+1];
-    render({top:true});focusSoon('#w-a0');
-  },
-  'wiz-finish'(){const id=S.boardId;S.wiz=null;openBoard(id);toast('Tablero creado. Elegí una acción para agregarle tareas.');}
+  'wiz-finish'(){const b=cur();if(!b||!b.pillars.some(p=>p.trim()))return;const id=S.boardId;S.wiz=null;openBoard(id);toast('Tablero creado. Escribí las acciones directo en la grilla.');}
 };
 document.addEventListener('click',e=>{
   const el=e.target.closest&&e.target.closest('[data-act]');
