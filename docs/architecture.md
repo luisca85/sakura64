@@ -9,7 +9,7 @@
   `pillarStats`, `countdown`, `weekData`.
 - Persistencia: `load`, `save` (debounce 250 ms), `markSeen`.
 - Vistas (devuelven HTML como string): `onbHTML`/`updateOnb` (onboarding), `homeHTML`
-  y `cardHTML` (inicio), `wizHTML` (asistente de 3 pasos en bloques, con `wizMapHTML`),
+  y `cardHTML` (inicio), `wizHTML` (asistente de 2 pasos en bloques: objetivo y pilares),
   `boardHTML` (tarjeta de encabezado con `metaHTML`) con pestañas `mapHTML` (grilla
   editable o panel de una casilla), `todayHTML` ("Tus tareas para hoy") y `sumHTML`
   ("Mi avance").

@@ -53,8 +53,8 @@ LATAM que la prueban desde un link público de Uxuaria.
 ## Test de regresión (a mano, con `python3 -m http.server 8080`)
 1. Pestaña nueva: aparece el onboarding (4 pasos); "Saltar" lleva al inicio y no
    vuelve a aparecer al recargar.
-2. Crear un tablero con el asistente en bloques (objetivo con color, pilares, acciones);
-   recargar: persiste.
+2. Crear un tablero con el asistente en bloques (objetivo con color y pilares); al
+   terminar se abre la grilla. Recargar: persiste.
 3. En el Mapa, escribir una acción directo en la grilla (Enter pasa a la siguiente),
    abrir su panel con el botón ↗, cambiar prioridad y estado, agregar una tarea
    "Lun, Mié, Vie"; en "Tus tareas para hoy" marcarla si corresponde y ver la racha.
