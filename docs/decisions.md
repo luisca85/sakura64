@@ -11,3 +11,7 @@
 2026-10-08 - El asistente pasa a 2 pasos (Objetivo y Pilares); las acciones se escriben en la grilla editable del tablero. Motivo: el paso 3 repetía la grilla y es mejor tener una sola forma de cargar acciones.
 2026-10-08 - El objetivo tiene color propio (campo `goalColor`, vacío = color por defecto), visible en el tablero, el inicio y el PDF. Motivo: pedido para que el objetivo se vea como un bloque personalizable; la paleta final queda A CONFIRMAR.
 2026-10-08 - Recargar a mitad del asistente vuelve al inicio con el tablero a medio armar en la lista. Motivo: se mantiene a propósito; no se guarda el paso del asistente.
+2026-10-08 - La grilla del Mapa se edita en el lugar y el inspector lateral se reemplaza por paneles por casilla. Motivo: escribir rápido en la grilla y entrar al detalle solo cuando hace falta.
+2026-10-08 - Las acciones de un pilar sin nombre quedan bloqueadas en la grilla. Motivo: respetar el orden del método (primero el pilar, después sus acciones).
+2026-10-08 - El texto largo se corta en la casilla; se ve completo al pasar el mouse y en el panel. Motivo: mantener la grilla estable y legible.
+2026-10-08 - Pestañas renombradas: "Hoy" pasa a "Tus tareas para hoy" y "Resumen y PDF" a "Mi avance". El progreso general va como barra en el encabezado, no como pestaña. Motivo: nombres más claros para el lector y evitar una pestaña que repita "Mi avance".

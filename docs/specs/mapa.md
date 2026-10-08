@@ -1,16 +1,39 @@
 # Feature: Mapa del tablero  ·  id: mapa
-Historia de usuario: Como dueño de un tablero, quiero ver y editar el 9x9 completo o un pilar a la vez, para trabajar mi objetivo con visión global y foco.
-Objetivo: grilla 9x9 con colores por pilar, inspector lateral para editar objetivo, pilar o acción (texto, prioridad, estado), vaciar con deshacer. Retrospectiva.
+Historia de usuario: Como dueño de un tablero, quiero escribir directo en la grilla de 9x9 y tener a mano el progreso y las secciones del tablero, para completar y seguir mi tablero sin abrir formularios, y entrar al detalle solo cuando lo necesito.
+Objetivo: la pestaña Mapa muestra la grilla a todo el ancho del contenedor, con cada casilla editable en el lugar y un botón para abrir su panel (ver `panel-casilla.md`). Arriba, una tarjeta de encabezado compacta reúne la vuelta al inicio, el objetivo, las cifras, el progreso general y las pestañas. Reemplaza al inspector lateral.
+
 Criterios de aceptación:
-  - Dado el mapa, cuando toco una casilla, entonces el inspector muestra objetivo, pilar o acción según `cellAt`.
-  - Dado un pilar editado en su bloque, cuando miro el anillo central, entonces muestra el mismo texto (un solo dato).
-  - Dado un ancho menor a 760px, cuando abro el mapa, entonces se ve un pilar a la vez con chips para cambiar.
-  - Dado el foco en la grilla, cuando uso las flechas, entonces se mueve la selección.
-  - Dado que vacío una casilla o pilar, cuando toco "Deshacer" en el aviso, entonces vuelve el contenido.
-  - Dado el ejemplo, cuando lo abro, entonces veo el aviso y "Duplicar como mío", y no puedo eliminarlo.
-Alcance: `mapHTML`, `gridHTML`, `blockHTML`, `cellHTML`, `toolbarHTML`, `inspHTML`, `patch`, teclado.
-Fuera de alcance / No tocar: PDF.
-Dependencias: `cellAt`, `NEI`, `getText`/`setText`, `boardStats`/`pillarStats`.
-Estados (UI): casilla vacía con "+"; sin selección, el inspector invita a elegir una casilla.
-Diseño: N/A
-Definición de hecho: la del AGENTS.md.
+Grilla
+  - Dado el Mapa en 1240px, cuando lo abro, entonces la grilla ocupa todo el ancho del contenedor y no hay panel lateral.
+  - Dada una casilla habilitada, cuando hago clic, entonces puedo escribir ahí mismo; el "+" de las vacías desaparece al entrar.
+  - Dado que escribo en una casilla, cuando cambia el texto, entonces se guarda en la sesión y se actualizan las cifras del encabezado sin perder el foco.
+  - Dado un pilar, cuando escribo en una de sus dos apariciones (anillo central o centro de su bloque), entonces la otra se actualiza en el momento.
+  - Dado un pilar sin texto, cuando miro sus 8 acciones, entonces se ven apagadas, no se pueden editar y un tooltip dice que primero hay que escribir el pilar.
+  - Dado un pilar sin texto, cuando le escribo el nombre, entonces sus 8 acciones se habilitan en el momento, sin recargar la grilla.
+  - Dado el foco en una casilla, cuando presiono Enter, entonces paso a la siguiente habilitada en orden horario dentro del bloque y, al terminar el bloque, al bloque del pilar siguiente (en celular cambia el bloque visible).
+  - Dado el foco en una casilla, cuando presiono las flechas arriba o abajo, entonces paso a la casilla vecina; izquierda y derecha mueven el cursor y solo saltan de casilla en el borde del texto.
+  - Dado el foco en una casilla, cuando presiono Esc, entonces salgo del texto y el foco queda en el botón de abrir panel.
+  - Dada una casilla, cuando paso el mouse o estoy escribiendo en ella, entonces aparece el botón ↗; al tocarlo o con Ctrl+Enter (Cmd+Enter en Mac) se abre su panel.
+  - Dado un texto que no entra en la casilla, cuando lo miro, entonces se corta y el texto completo se ve al pasar el mouse y en el panel.
+  - Dada una acción con tareas, prioridad alta o estado, cuando la miro, entonces muestra el número de tareas, la marca "Alta" y el ícono de estado.
+  - Dado un ancho menor a 760px, cuando abro el Mapa, entonces se ve un bloque a la vez con chips para cambiar y las casillas siguen siendo editables.
+Encabezado
+  - Dado un tablero abierto, cuando lo miro, entonces veo una tarjeta con "Volver al inicio" con ícono, el color y el texto del objetivo, 3 cifras (acciones definidas de 64, logradas y días para la meta o "Sin fecha"), una barra de progreso general y las pestañas.
+  - Dada la barra de progreso general, cuando la miro, entonces la parte clara son las acciones definidas y la sólida las logradas sobre 64, con el porcentaje logrado al lado.
+  - Dadas las pestañas, cuando las miro, entonces se llaman "Mapa", "Tus tareas para hoy" y "Mi avance", con ícono, y "Exportar PDF" queda a la derecha.
+  - Dadas tareas pendientes para hoy, cuando miro la pestaña "Tus tareas para hoy", entonces muestra cuántas faltan cumplir.
+  - Dado el tablero de ejemplo, cuando lo abro, entonces veo la etiqueta "Ejemplo" y el aviso con "Duplicar como mío", y no se puede eliminar.
+  - Dado un ancho de 375px, cuando miro el encabezado, entonces las 3 pestañas entran sin desplazamiento horizontal y "Exportar PDF" va debajo a todo el ancho.
+  - Dado el modo oscuro, cuando elijo "Un pilar a la vez", entonces el chip "Objetivo" seleccionado se lee.
+
+Alcance: `mapHTML` (sin inspector), `gridHTML`, `blockHTML`, `cellHTML`, `cellCls`, `cellLive`, `cellNext`, `fitCell`/`fitCells`, `toolbarHTML`, `boardHTML`, `metaHTML`, íconos `ic`/`IC`, teclado de la grilla, CSS de `.cell`, `.copen`, `.ntk`, `.bd-top`, `.stats`, `.gprog`, `.tabsrow`, `.tab`, `.bdg`. Se eliminan `inspHTML`, `scrollInsp` y su CSS. Texto del inicio que nombra la pestaña Hoy pasa a "Tus tareas para hoy".
+Fuera de alcance / No tocar: contenido de los paneles por casilla (`panel-casilla.md`), contenido de las pestañas "Tus tareas para hoy" y "Mi avance" (solo cambia el nombre), PDF, persistencia.
+Dependencias: `cellAt`/`NEI`, `getText`/`setText`, `boardStats`, `isDue`, `tipHTML`, `gcs()` y `goalColor` (de `asistente.md`), `openDet` (de `panel-casilla.md`).
+Estados (UI): casilla vacía con "+"; acciones apagadas mientras el pilar no tiene nombre; sin fecha meta, la cifra dice "Sin fecha"; sin tareas para hoy, la pestaña no muestra número. Sin carga ni error (todo es local).
+Diseño: N/A (prototipo en la rama `explorar/onboarding`, commits 1218647, e0bc658, f21e3b3 y 81939ee).
+A CONFIRMAR: si un pilar con acciones escritas se vacía, sus acciones se ven atenuadas y de solo lectura (sin borrarse) hasta que el pilar vuelva a tener nombre. Es la propuesta, falta tu visto bueno.
+Definición de hecho: la del AGENTS.md, más:
+  - En el ejemplo y en un tablero nuevo: escribir en la grilla, Enter, flechas, Esc, abrir el panel con el botón y con Ctrl+Enter.
+  - Escribir el nombre de un pilar vacío y ver cómo se habilitan sus acciones sin perder el foco.
+  - Comprobar que `scrollWidth` es igual a `clientWidth` en 1240px y en 375px, en claro y en oscuro.
+  - El test de regresión del AGENTS.md cambia el paso 3 por: escribir en la grilla y abrir el panel de una acción para agregar una tarea.
