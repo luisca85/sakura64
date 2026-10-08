@@ -9,8 +9,16 @@
   `pillarStats`, `countdown`, `weekData`.
 - Persistencia: `load`, `save` (debounce 250 ms), `markSeen`.
 - Vistas (devuelven HTML como string): `onbHTML`/`updateOnb` (onboarding), `homeHTML`
-  y `cardHTML` (inicio), `wizHTML` (asistente de 3 pasos), `boardHTML` con pestañas
-  `mapHTML` (grilla + `inspHTML`), `todayHTML` (Hoy), `sumHTML` (Resumen y PDF).
+  y `cardHTML` (inicio), `wizHTML` (asistente de 3 pasos en bloques, con `wizMapHTML`),
+  `boardHTML` (tarjeta de encabezado con `metaHTML`) con pestañas `mapHTML` (grilla
+  editable o panel de una casilla), `todayHTML` ("Tus tareas para hoy") y `sumHTML`
+  ("Mi avance").
+- Grilla editable: `cellHTML` (textarea por casilla + botón ↗), `cellLive` (sincroniza
+  las dos apariciones de un pilar sin redibujar), `cellNext` (Enter), `fitCells`.
+- Paneles por casilla: `openDet`, `detHTML`, `detNavHTML`, `detSib`; estado `S.det`;
+  historial con `history.pushState({det, b})` y `popstate`.
+- Piezas compartidas: `tipHTML` (tooltips), `wcellHTML` (casilla editable de bloque),
+  `GCOL`/`gcs()` (color del objetivo), `ic`/`IC` (íconos).
 - Render: `render()` redibuja todo `#app` preservando foco y selección;
   `patch()` actualiza solo grilla y métricas mientras se escribe; `toast()` con deshacer.
 - Exportación: `buildPDF` / `exportPDF` (jsPDF, A4: mapa apaisado + detalle),
@@ -25,11 +33,12 @@
 - `docs/`: esta documentación spec-lite.
 
 ## Modelo de datos
-Tablero: `{id, example, goal, goalDate, pillars[8], actions[8][8], tasks[], created}`.
+Tablero: `{id, example, goal, goalDate, goalColor, pillars[8], actions[8][8], tasks[], created}`.
+`goalColor`: hex o vacío (color por defecto); los tableros viejos sin el campo se ven igual.
 - Acción: `{t, pri: alta|media|baja, st: sin|curso|lograda}`.
 - Tarea: `{id, k, i, title, freq: daily|weekdays|days|once, days[], done{AAAA-MM-DD: true}, start}`.
   `k`/`i` apuntan a pilar/acción; `days` en base lunes = 0.
-Estado de UI en `S` (vista, tablero abierto, pestaña, modo, selección, asistente). No se persiste.
+Estado de UI en `S` (vista, tablero abierto, pestaña, modo, selección, panel abierto `det`, asistente). No se persiste.
 
 ## Persistencia
 `sessionStorage`, clave `harada-v1` → `{boards: [...]}`; `harada-seen` = "1" tras el

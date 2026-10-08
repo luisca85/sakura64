@@ -20,6 +20,8 @@ LATAM que la prueban desde un link público de Uxuaria.
 - Accesibilidad: roles y `aria-*` en tabs, radios, checkboxes y progreso; navegación
   por teclado en la grilla; foco preservado al re-renderizar (`data-fid`).
 - Responsividad: debajo de 760px la grilla se muestra un pilar a la vez (`narrow()`).
+- Navegación: los paneles por casilla usan `history.pushState` con `{det, b}`; toda
+  entrada nueva del historial lleva el id del tablero.
 - Sistema visual: colores como variables CSS en `:root` con versión oscura. Los 8
   colores de pilar (`--p1`..`--p8`) están duplicados en `PHEX` para el PDF: si
   cambiás uno, cambiá los dos.
@@ -51,9 +53,12 @@ LATAM que la prueban desde un link público de Uxuaria.
 ## Test de regresión (a mano, con `python3 -m http.server 8080`)
 1. Pestaña nueva: aparece el onboarding (4 pasos); "Saltar" lleva al inicio y no
    vuelve a aparecer al recargar.
-2. Crear un tablero con el asistente (objetivo, pilares, acciones); recargar: persiste.
-3. En el mapa, editar una acción, cambiar prioridad y estado, agregar una tarea
-   "Lun, Mié, Vie"; en Hoy marcarla si corresponde y ver la racha.
+2. Crear un tablero con el asistente en bloques (objetivo con color, pilares, acciones);
+   recargar: persiste.
+3. En el Mapa, escribir una acción directo en la grilla (Enter pasa a la siguiente),
+   abrir su panel con el botón ↗, cambiar prioridad y estado, agregar una tarea
+   "Lun, Mié, Vie"; en "Tus tareas para hoy" marcarla si corresponde y ver la racha.
+   Volver con el "atrás" del navegador: panel, después grilla.
 4. "Exportar PDF" descarga un PDF con el mapa a color y el detalle. "Copiar resumen
    como texto" copia (o muestra el textarea si no hay portapapeles).
 5. Abrir el ejemplo: no tiene botón de eliminar; "Duplicar como mío" crea una copia editable.
