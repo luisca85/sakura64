@@ -27,4 +27,4 @@ Después entrá a http://localhost:8080.
 3. Configuración de build: framework en "None", comando de build vacío y directorio de salida `/`.
 4. Cada push a la rama principal publica una versión nueva.
 
-Las fuentes (Bricolage Grotesque y Atkinson Hyperlegible) se cargan desde Google Fonts. Si no cargan, el sitio usa fuentes del sistema.
+La tipografía (Noto Sans JP) se carga desde Google Fonts. Si no carga, el sitio usa fuentes del sistema. Los íconos (set "Japan Icons (Community)" de Figma) van incrustados en `index.html`.

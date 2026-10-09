@@ -17,7 +17,7 @@ Acceso
 Contenido
   - Dada Privacidad, cuando la leo, entonces explica qué datos se usan, que se guardan solo en `sessionStorage` y se borran al cerrar la pestaña, que el PDF y el resumen se generan en el dispositivo, que no hay servidor, cuentas, cookies, analítica ni publicidad, que no se venden ni comparten datos, y que Google Fonts recibe datos técnicos como la IP.
   - Dados los Términos, cuando los leo, entonces incluyen: gratuita y sin fines comerciales (no se cobra, no hay publicidad, no se venden ni comparten datos, no hay productos ni servicios pagos), qué es y qué no es (no es asesoramiento profesional), sin garantías, el contenido es de quien lo escribe, inspiración en el método de Takashi Harada sin afiliación, propiedad del sitio y ley aplicable.
-  - Dados los Créditos, cuando los leo, entonces nombran jsPDF 2.5.1 (licencia MIT), las tipografías Bricolage Grotesque y Atkinson Hyperlegible, y que el ejemplo usa datos inventados.
+  - Dados los Créditos, cuando los leo, entonces nombran jsPDF 2.5.1 (licencia MIT), la tipografía Noto Sans JP, el set de íconos "Japan Icons (Community)" de Figma, y que el ejemplo usa datos inventados.
   - Dado un dato que falta, cuando lo miro, entonces aparece resaltado como "[A COMPLETAR: ...]" y arriba de la página hay un aviso de borrador.
 Visual
   - Dado un ancho de 375px y de 1240px, en claro y en oscuro, cuando abro cada sección, entonces no hay desplazamiento horizontal y el texto se lee en una columna de hasta 68 caracteres.

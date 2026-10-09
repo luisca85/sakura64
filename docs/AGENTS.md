@@ -23,8 +23,12 @@ LATAM que la prueban desde un link público de Uxuaria.
 - Navegación: los paneles por casilla usan `history.pushState` con `{det, b}`; toda
   entrada nueva del historial lleva el id del tablero.
 - Sistema visual: colores como variables CSS en `:root` con versión oscura. Los 8
-  colores de pilar (`--p1`..`--p8`) están duplicados en `PHEX` para el PDF: si
-  cambiás uno, cambiá los dos.
+  colores de pilar (`--p1`..`--p8`) están duplicados en `PHEX` para el PDF, y su
+  color de texto (`--f1`..`--f8`) en `PFG`: si cambiás uno, cambiá los dos y
+  verificá contraste de 4.5:1. Sin sombras, bordes finos, esquinas de 2px en
+  píldoras, acento magenta `--accent` con texto blanco.
+- Patrón de pantalla: navegación, subheader a todo el ancho (`subHTML`, papel
+  cuadriculado) y zona de trabajo. Toda pantalla nueva lo respeta.
 - Idioma: español rioplatense con voseo ("Creá", "Elegí"). Sin rayas largas (em dash).
 
 ## Comportamiento del agente
@@ -48,7 +52,7 @@ LATAM que la prueban desde un link público de Uxuaria.
   `awk '/^<script>$/{f=1;next}/^<\/script>/{f=0}f' index.html > /tmp/h.js && node --check /tmp/h.js`
 - Sin errores en la consola del navegador al recorrer el test de regresión.
 - Texto nuevo de interfaz en voseo y sin em dashes.
-- Si se tocó un color de pilar: `:root`, modo oscuro y `PHEX` coinciden.
+- Si se tocó un color de pilar: `:root`, modo oscuro, `PHEX` y `PFG` coinciden.
 
 ## Test de regresión (a mano, con `python3 -m http.server 8080`)
 1. Pestaña nueva: aparece el onboarding (4 pasos); "Saltar" lleva al inicio y no

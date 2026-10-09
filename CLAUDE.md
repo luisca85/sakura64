@@ -27,7 +27,8 @@ Un tablero es un objeto: `goal`, `goalDate`, `pillars[8]` (texto), `actions[8][8
 
 - Texto de la interfaz en español rioplatense con voseo (por ejemplo "Creá", "Elegí").
 - Sin rayas largas (em dashes) en los textos en español.
-- Colores definidos como variables CSS en `:root`, con versión oscura. Los 8 colores de pilar (`--p1` a `--p8`) también están repetidos en `PHEX` dentro del script para el PDF. Si cambiás uno, cambialo en los dos lugares.
+- Colores definidos como variables CSS en `:root`, con versión oscura. Los 8 colores de pilar (`--p1` a `--p8`) también están repetidos en `PHEX` dentro del script para el PDF, y su color de texto (`--f1` a `--f8`) en `PFG`. Si cambiás uno, cambialo en los dos lugares y verificá contraste de 4.5:1.
+- Cada pantalla sigue el patrón navegación, subheader (`subHTML`, papel cuadriculado) y zona de trabajo.
 - La interfaz se vuelve a dibujar completa con `render()`. Mientras se escribe en un campo se usa `patch()` para no perder el foco.
 
 ## Pendiente de ideas

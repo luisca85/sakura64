@@ -18,8 +18,11 @@
 - Paneles por casilla: `openDet`, `detHTML`, `detNavHTML`, `detSib`; estado `S.det`;
   historial con `history.pushState({det, b})` y `popstate`.
 - Información legal: `LEGAL` (Privacidad, Términos, Créditos), `legalHTML`, vista `S.view='legal'` con `S.legal`; se llega desde los links del pie (`footHTML`). `TBD()` marca los datos que faltan.
+- Patrón de pantalla: `barHTML` (navegación), `subHTML` (subheader a todo el ancho con papel cuadriculado, clases `.band .sub`) y la zona de trabajo debajo. Lo usan inicio, tablero, asistente, legal y onboarding.
+- Íconos: `JI` (13 trazos del set "Japan Icons (Community)" de Figma, incrustados), `jicon(n, tamaño)` con `currentColor`; `CARD_ICONS`/`boardIcon` eligen el ícono de cada tarjeta por posición. `logo()` dibuja la flor de sakura con `PISTILS` en rojo.
+- Color: `--p1`..`--p8` y `PHEX` (pilares), `--f1`..`--f8` y `PFG` (texto sobre cada pilar), `pfv(k)`; acento `--accent` magenta.
 - Piezas compartidas: `tipHTML` (tooltips), `wcellHTML` (casilla editable de bloque),
-  `GCOL`/`gcs()` (color del objetivo), `ic`/`IC` (íconos).
+  `GCOL`/`gcs()` (color del objetivo), `ic`/`IC` (íconos de interfaz), `bubbleHTML` (globos de ayuda), `cardHTML` (tarjetas del inicio).
 - Render: `render()` redibuja todo `#app` preservando foco y selección;
   `patch()` actualiza solo grilla y métricas mientras se escribe; `toast()` con deshacer.
 - Exportación: `buildPDF` / `exportPDF` (jsPDF, A4: mapa apaisado + detalle),
