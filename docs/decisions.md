@@ -30,3 +30,5 @@
 2026-10-09 - Pilares en rojo, naranja, amarillo, verde manzana, turquesa, cian, azul y magenta, con color de texto por pilar (`--f1`..`--f8`, `PFG`). Reemplaza la paleta anterior. Motivo: pedido de producto; el texto por pilar asegura contraste de 4.5:1.
 2026-10-09 - Íconos del set "Japan Icons (Community)" de Figma, incrustados en `index.html`; logo de flor de sakura con pistilos rojos. Motivo: identidad japonesa coherente; incrustados para que la app funcione sin servidor. Licencia: A CONFIRMAR.
 2026-10-09 - La app se llama "SAKURA 64" (reemplaza a "Objetivo 64"). "Harada" queda solo como mención del método que inspira la grilla. Las claves internas `harada-v1` y `harada-seen` no se renombran. Motivo: pedido de producto; el nombre acompaña la identidad visual (logo de sakura).
+2026-10-09 - El acento pasa de amarillo a magenta `#E4007F` con texto blanco. Motivo: pedido de producto.
+2026-10-09 - Se construye primero `legales` y después `visual` sobre `main`. El ícono de tarjeta se calcula por posición y la página legal usa el patrón de subheader. Motivo: las dos ramas tocan el mismo archivo; lo demás se acepta como quedó en la exploración.
