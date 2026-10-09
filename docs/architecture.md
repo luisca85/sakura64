@@ -25,8 +25,13 @@
   `GCOL`/`gcs()` (color del objetivo), `ic`/`IC` (íconos de interfaz), `bubbleHTML` (globos de ayuda), `cardHTML` (tarjetas del inicio).
 - Render: `render()` redibuja todo `#app` preservando foco y selección;
   `patch()` actualiza solo grilla y métricas mientras se escribe; `toast()` con deshacer.
-- Exportación: `buildPDF` / `exportPDF` (jsPDF, A4: mapa apaisado + detalle),
-  `textSummary` (copiar como texto), `slug` para el nombre del archivo.
+- Exportación: `buildPDF` / `exportPDF` (jsPDF, 3 páginas A4 apaisadas: tablero,
+  tareas y resumen; `logoPNG`, `PDF_CONTACT`, `LEGAL_URL`), `textSummary` (copiar
+  como texto), `slug` para el nombre del archivo.
+- Personaje y boletín: `MASCOT_SVG`, `mascotHTML` (estado `S.mascot`: idle, form,
+  done), `subscribe` (POST `no-cors` a `NEWSLETTER_URL`, formulario público de
+  Brevo), `isSubscribed` (clave `harada-sub`).
+- Haikus: `HAIKUS`, `haikuHTML` dentro de `subHTML`, `haikuTick` cada 60 ms.
 - Eventos: objeto `A` de acciones despachadas por `data-act`; inputs con `data-bind`;
   teclado en la grilla (flechas); cambio de ancho re-renderiza.
 
@@ -46,9 +51,9 @@ Estado de UI en `S` (vista, tablero abierto, pestaña, modo, selección, panel a
 
 ## Persistencia
 `sessionStorage`, clave `harada-v1` → `{boards: [...]}`; `harada-seen` = "1" tras el
-onboarding. Si no hay nada guardado se carga solo el ejemplo. Todo en try/catch: sin
+onboarding; `harada-sub` = "1" tras suscribirse. Si no hay nada guardado se carga solo el ejemplo. Todo en try/catch: sin
 storage la app funciona igual, sin guardar.
 
 ## Publicación
-Sitio estático; README describe Cloudflare Pages (sin build, salida `/`).
-Destino en Uxuaria (dominio, ruta, proyecto): A CONFIRMAR. Ver `specs/publicacion.md`.
+Sitio estático en Cloudflare Pages conectado a GitHub (sin build, salida `/`), en
+`sakura64.uxuaria.com`. Ver `specs/publicacion.md`.

@@ -25,6 +25,7 @@ Después entrá a http://localhost:8080.
 1. Subí esta carpeta a un repositorio de GitHub.
 2. En Cloudflare, andá a Workers y Pages, creá un proyecto de Pages y conectalo con el repositorio.
 3. Configuración de build: framework en "None", comando de build vacío y directorio de salida `/`.
-4. Cada push a la rama principal publica una versión nueva.
+4. En el proyecto, Dominios personalizados: agregá `sakura64.uxuaria.com` (como `uxuaria.com` ya está en Cloudflare, el registro DNS se crea solo).
+5. Cada push a la rama principal publica una versión nueva.
 
 La tipografía (Noto Sans JP) se carga desde Google Fonts. Si no carga, el sitio usa fuentes del sistema. Los íconos (set "Japan Icons (Community)" de Figma) van incrustados en `index.html`.

@@ -9,10 +9,13 @@ LATAM que la prueban desde un link público de Uxuaria.
 - Simplicidad: todo vive en `index.html` (CSS, marcado y un único `<script>` IIFE,
   sin framework). Sin build, sin servidor, sin base de datos. No agregar
   dependencias ni pasos de build sin registrarlo en decisions.md.
-- Privacidad: los datos no salen del navegador. Nada de `fetch`, analytics ni
-  servicios de terceros que reciban contenido del usuario. Única carga externa
-  permitida: Google Fonts, con fuente del sistema como respaldo.
-- Persistencia efímera a propósito: `sessionStorage` (`harada-v1`, `harada-seen`).
+- Privacidad: los tableros no salen del navegador. Nada de analytics ni servicios
+  de terceros que reciban contenido del tablero. Cargas externas permitidas: Google
+  Fonts (con fuente del sistema de respaldo) y el envío del correo al formulario
+  público de Brevo cuando la persona se suscribe para descargar el PDF. Nunca una
+  clave de API en el sitio.
+- Persistencia efímera a propósito: `sessionStorage` (`harada-v1`, `harada-seen`,
+  `harada-sub`).
   Se pierde al cerrar la pestaña; la forma de conservar es el PDF o el texto copiado.
   No hay importación de datos (decisión de producto).
 - Seguridad de render: todo texto del usuario que entra a HTML pasa por `esc()`.
@@ -57,14 +60,15 @@ LATAM que la prueban desde un link público de Uxuaria.
 ## Test de regresión (a mano, con `python3 -m http.server 8080`)
 1. Pestaña nueva: aparece el onboarding (4 pasos); "Saltar" lleva al inicio y no
    vuelve a aparecer al recargar.
-2. Crear un tablero con el asistente en bloques (objetivo con color y pilares); al
+2. Crear un tablero con el asistente en bloques (objetivo y pilares); al
    terminar se abre la grilla. Recargar: persiste.
 3. En el Mapa, escribir una acción directo en la grilla (Enter pasa a la siguiente),
    abrir su panel con el botón ↗, cambiar prioridad y estado, agregar una tarea
    "Lun, Mié, Vie"; en "Tus tareas para hoy" marcarla si corresponde y ver la racha.
    Volver con el "atrás" del navegador: panel, después grilla.
-4. "Exportar PDF" descarga un PDF con el mapa a color y el detalle. "Copiar resumen
-   como texto" copia (o muestra el textarea si no hay portapapeles).
+4. Tocar el personaje: pide el correo (validar errores sin enviar); con
+   "Exportar PDF" ya suscripto, descarga un PDF de 3 páginas (tablero, tareas,
+   resumen). "Copiar resumen como texto" copia (o muestra el textarea).
 5. Abrir el ejemplo: no tiene botón de eliminar; "Duplicar como mío" crea una copia editable.
 6. Eliminar un tablero propio y usar "Deshacer".
 7. Repetir 2 a 4 en ancho de celular (375px) y en modo oscuro.

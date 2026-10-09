@@ -28,12 +28,13 @@ Componentes
   - Dado un campo de texto, de fecha o un selector con etiqueta, cuando lo miro, entonces tiene borde de tinta, fondo blanco y un piquito de globo de chat arriba a la izquierda.
   - Dada una ayuda (consejo del inicio, explicación bajo la grilla), cuando la miro, entonces es un globo de diálogo con borde de tinta, piquito y el logo como avatar.
   - Dado un ícono "?", cuando paso el mouse o llego con el teclado, entonces se abre un globo blanco con borde fino y piquito, y oculto no genera desplazamiento horizontal.
-  - Dada una tarjeta del inicio, cuando la miro, entonces tiene: etiqueta "EJEMPLO" o "TABLERO" y fecha arriba, ícono del tablero y objetivo con una línea de tinta debajo, 3 etiquetas de datos y los links "Abrir", "Duplicar" y "Eliminar" (este último en gris; no aparece en el ejemplo).
+  - Dada una tarjeta del inicio, cuando la miro, entonces tiene: etiqueta "EJEMPLO" o "TABLERO" y fecha arriba, ícono del tablero en magenta y objetivo con una línea de tinta debajo, 3 etiquetas de datos y los links "Abrir", "Duplicar" y "Eliminar" (este último en gris; no aparece en el ejemplo).
 Color
   - Dados los 8 pilares, cuando miro el anillo central, entonces van en orden horario: rojo `#D9282F`, naranja `#F39800`, amarillo `#FFD400`, verde manzana `#8CC63F`, turquesa `#00B5A5`, cian `#00A7E1`, azul `#2F5DCF` y magenta `#E4007F`.
   - Dado un pilar, cuando miro su casilla rellena, su chip o su marca, entonces el texto es oscuro en los claros y blanco en rojo, azul y magenta, con contraste de al menos 4.5:1.
   - Dado el PDF, cuando lo exporto, entonces usa los mismos colores (`PHEX`) y el mismo color de texto por pilar (`PFG`), y el estado de cada acción va en tinta cuando el pilar es claro.
   - Dado el acento magenta `#E4007F`, cuando aparece (etiqueta "Ejemplo", contador de tareas, cuadradito de "MI OBJETIVO", paso actual, texto seleccionado), entonces siempre lleva texto blanco encima (4.56:1); no hay líneas de acento bajo títulos ni pestañas (la pestaña activa se subraya en tinta).
+  - Dado el pie, cuando lo miro, entonces es una franja blanca con el crédito del diseño (ver `haikus.md`).
 Íconos y marca
   - Dado el logo (encabezado, onboarding, avatar de ayudas y favicon), cuando lo miro, entonces es la flor de sakura del set, con los 5 pistilos y el centro rellenos en rojo `#D9282F`.
   - Dadas las pestañas, cuando las miro, entonces llevan caja bento (Mapa), pincel (Tus tareas para hoy) y bambú (Mi avance).

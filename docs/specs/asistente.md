@@ -5,7 +5,7 @@ Criterios de aceptación:
 Paso 1, Objetivo
   - Dado un tablero nuevo, cuando abro el asistente, entonces veo los pasos "Objetivo" y "Pilares", y el foco queda dentro del bloque del objetivo.
   - Dado el paso Objetivo, cuando escribo, entonces el texto aparece dentro del bloque y un contador muestra "N de 140".
-  - Dado el paso Objetivo, cuando toco un color de la paleta, entonces el bloque toma ese color y el mismo color se ve después en la casilla del objetivo del mapa, en la miniatura de la tarjeta del inicio y en el PDF.
+  - Dado un tablero nuevo, cuando abro el asistente, entonces el objetivo ya tiene un color al azar de la paleta (sin selector en el paso; ver `haikus.md`), y ese color se ve en la casilla del objetivo del mapa y en el PDF.
   - Dado el paso Objetivo, cuando toco un ejemplo, entonces su texto reemplaza el del bloque y se puede editar.
   - Dado el paso Objetivo, cuando elijo una fecha meta, entonces aparece la cuenta regresiva debajo.
   - Dado el paso Objetivo vacío, cuando miro "Siguiente: definir pilares", entonces está deshabilitado; con texto se habilita.
@@ -27,7 +27,7 @@ Fuera de alcance / No tocar: la grilla del Mapa y los paneles por casilla (`mapa
 Dependencias: `blankBoard` (suma `goalColor: ''`), `cellAt`/`NEI`, `PHEX` y `--p1`..`--p8`, `buildPDF`/`rgb()`, `openBoard`, `save`, `render`, y la grilla editable de `mapa.md` para cargar las acciones.
 Estados (UI): vacío = botones deshabilitados y textos de ayuda en gris. Sin carga ni error (todo es local). Tableros guardados sin `goalColor` usan el color por defecto.
 Diseño: N/A (aprobado en la rama `explorar/onboarding`, commits 82a060f y 5f34e4b).
-Paleta de colores del objetivo: A CONFIRMAR. La aprobada en la exploración es Tinta (por defecto, `--goal-bg`), Granate #9E2A2B, Bosque #1D5C4D, Índigo #3E2C7A, Ámbar #8A5A0B y Petróleo #0E5A73.
+Paleta de colores del objetivo: Blanco (sin color, borde de tinta), Granate #9E2A2B, Bosque #1D5C4D, Índigo #3E2C7A, Ámbar #8A5A0B y Petróleo #0E5A73.
 Definición de hecho: la del AGENTS.md, más:
   - Recorrer los 2 pasos con teclado solo (Tab, Enter) y con mouse, en 1240px y en 375px, en claro y en oscuro.
   - Elegir un color, terminar y verificar ese color en el mapa, la tarjeta del inicio y el PDF descargado.

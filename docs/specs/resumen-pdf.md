@@ -1,6 +1,6 @@
 # Feature: Resumen y PDF  ·  id: pdf
 Historia de usuario: Como persona que armó su tablero, quiero descargarlo en PDF o copiarlo como texto, para conservarlo porque la app no guarda nada al cerrar la pestaña.
-Objetivo: pestaña Resumen con avance por pilar, tabla de tareas y semana; exportación PDF (mapa 9x9 a color apaisado + detalle por pilar y tareas) y texto plano. Retrospectiva.
+Objetivo: (el diseño del PDF y el botón de exportar se reemplazan por `exportacion.md`; acá queda la pestaña "Mi avance" y el texto copiado.) Pestaña Resumen con avance por pilar, tabla de tareas y semana; exportación PDF (mapa 9x9 a color apaisado + detalle por pilar y tareas) y texto plano. Retrospectiva.
 Criterios de aceptación:
   - Dado cualquier tablero, cuando toco "Exportar PDF", entonces se descarga `<slug-del-objetivo>.pdf` sin conexión a internet.
   - Dado un texto con comillas tipográficas, rayas o emojis, cuando exporto, entonces el PDF no muestra caracteres rotos (`L()`).
