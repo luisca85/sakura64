@@ -169,9 +169,11 @@ button{cursor:pointer}
 @media (max-width:640px){
   .mc-bub{padding-right:30px}
   .mc-bx{display:block;position:absolute;top:2px;right:2px;width:28px;height:28px;border:0;background:none;font-size:18px;line-height:1;color:var(--muted);cursor:pointer}
-  .mc-bub.min{padding:6px 10px;cursor:default;max-width:none}
-  .mc-bub.min .mc-full,.mc-bub.min .mc-bx{display:none}
-  .mc-bub.min .mc-open{display:block;font-size:13px;min-height:28px;padding:2px 0;white-space:nowrap;text-align:left}
+  .mc-bub.min{padding:0;cursor:default;max-width:none;margin-right:16px}
+  .mc-bub.min::before,.mc-bub.min::after{right:12px}
+  .mc-bub.min .mc-full,.mc-bub.min .mc-bx,.mc-bub.min .mc-jp{display:none}
+  .mc-bub.min .mc-open{display:grid;place-items:center;width:36px;height:30px;padding:0;border:0;background:none;color:var(--accent);cursor:pointer}
+  .mc-bub.min .mc-open svg{width:18px;height:18px}
 }
 @media (prefers-reduced-motion:reduce){.mc-svg{animation:none}.mc-card{animation:none}}
 /* haikus del subheader */
@@ -1490,7 +1492,7 @@ function mascotHTML(){
   else bub='<div class="mc-bub'+(S.bubMin?' min':'')+'"'+(S.bubMin?'':' data-act="mascot"')+'><span class="mc-jp" lang="ja" aria-hidden="true">頑張って！</span>'+
     '<span class="mc-full" aria-hidden="true">Llevate tu tablero, tus tareas y tu avance en un PDF<span class="mc-note">No lo guardamos en ningún servidor: al cerrar la pestaña, se borra.</span></span>'+
     '<button type="button" class="mc-bx" data-act="bub-min" data-fid="bub-min" aria-label="Cerrar mensaje">×</button>'+
-    '<button type="button" class="lnk mc-open" data-act="bub-max" data-fid="bub-max">Descargar tu tablero SAKURA 64</button></div>';
+    '<button type="button" class="mc-open" data-act="bub-max" data-fid="bub-max" aria-label="Abrir mensaje: descargar tu tablero SAKURA 64"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div>';
   return '<div class="mascot'+(m!=='idle'?' open':'')+'">'+bub+
     '<button type="button" class="mc-btn" data-act="mascot" data-fid="mc-btn" aria-label="Descargar tu tablero, tus tareas y tu avance en PDF. No lo guardamos en ningún servidor: al cerrar la pestaña, se borra.">'+MASCOT_SVG+'</button></div>';
 }
