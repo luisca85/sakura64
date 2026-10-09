@@ -164,6 +164,15 @@ button{cursor:pointer}
 .mc-x:hover{color:var(--ink)}
 .bd{padding-bottom:140px}
 @media (max-width:520px){.mascot{right:10px;bottom:10px}.mc-btn{width:60px;height:68px}.mc-bub{font-size:13px;padding:6px 11px;max-width:190px}}
+.mc-full{display:block}
+.mc-bx,.mc-open{display:none}
+@media (max-width:640px){
+  .mc-bub{padding-right:30px}
+  .mc-bx{display:block;position:absolute;top:2px;right:2px;width:28px;height:28px;border:0;background:none;font-size:18px;line-height:1;color:var(--muted);cursor:pointer}
+  .mc-bub.min{padding:6px 10px;cursor:default;max-width:none}
+  .mc-bub.min .mc-full,.mc-bub.min .mc-bx{display:none}
+  .mc-bub.min .mc-open{display:block;font-size:13px;min-height:28px;padding:2px 0;white-space:nowrap;text-align:left}
+}
 @media (prefers-reduced-motion:reduce){.mc-svg{animation:none}.mc-card{animation:none}}
 /* haikus del subheader */
 .sub-in,.band>.wrap,.bd-top{position:relative}
@@ -280,6 +289,7 @@ button.crumb:hover{background:var(--surface2);color:var(--ink)}
 .seg button{border:0;background:var(--surface);padding:6px 14px;min-height:38px;font-size:13px;font-weight:700;color:var(--muted)}
 .seg button[aria-checked="true"]{background:var(--btn-bg);color:var(--btn-fg)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
+@media (max-width:640px){.chips{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;margin-inline:-16px;padding:2px 16px 6px;scroll-padding-inline:16px}.chips::-webkit-scrollbar{display:none}.chips .chip{flex:none;scroll-snap-align:start}}
 .chip{display:inline-flex;align-items:center;gap:8px;max-width:210px;min-height:34px;padding:4px 10px;border-radius:2px;border:1px solid var(--line);background:var(--surface);font-weight:500;font-size:13px}
 .chip span.lb{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .chip[aria-pressed="true"]{background:var(--pc);border-color:var(--pc);color:var(--pf,#fff)}
@@ -1262,6 +1272,8 @@ function render(opts){
   app.innerHTML=html;
   fitCells();
   if(S.view==='onb'){S.onb=S.onb||0;updateOnb();}
+  const chs=app.querySelector('.chips'),chp=chs&&chs.querySelector('[aria-pressed="true"]');
+  if(chs&&chp&&chs.scrollWidth>chs.clientWidth)chs.scrollLeft=Math.max(0,chp.offsetLeft-chs.offsetLeft-16-(chs.clientWidth-chp.offsetWidth)/2+16);
   requestAnimationFrame(()=>{app.style.minHeight='';});
   if(opts.top)window.scrollTo(0,0);
   if(fid&&S.view!=='onb'){
@@ -1475,7 +1487,10 @@ function mascotHTML(){
       '<p class="mc-err" id="mc-err" role="alert"></p>'+
       '<button class="btn primary" type="submit" data-fid="mc-send">Suscribirme y descargar</button></form>';
   else if(m==='done')bub='<div class="mc-card mc-done" role="status"><button type="button" class="mc-x" data-act="mascot-close" data-fid="mc-x" aria-label="Cerrar">×</button><p class="mc-t">¡Gracias por suscribirte!</p><p class="mc-p">Tu PDF se está descargando.</p></div>';
-  else bub='<button type="button" class="mc-bub" data-act="mascot" tabindex="-1" aria-hidden="true"><span class="mc-jp" lang="ja">頑張って！</span>Llevate tu tablero, tus tareas y tu avance en un PDF<span class="mc-note">No lo guardamos en ningún servidor: al cerrar la pestaña, se borra.</span></button>';
+  else bub='<div class="mc-bub'+(S.bubMin?' min':'')+'"'+(S.bubMin?'':' data-act="mascot"')+'><span class="mc-jp" lang="ja" aria-hidden="true">頑張って！</span>'+
+    '<span class="mc-full" aria-hidden="true">Llevate tu tablero, tus tareas y tu avance en un PDF<span class="mc-note">No lo guardamos en ningún servidor: al cerrar la pestaña, se borra.</span></span>'+
+    '<button type="button" class="mc-bx" data-act="bub-min" data-fid="bub-min" aria-label="Cerrar mensaje">×</button>'+
+    '<button type="button" class="lnk mc-open" data-act="bub-max" data-fid="bub-max">Descargar tu tablero SAKURA 64</button></div>';
   return '<div class="mascot'+(m!=='idle'?' open':'')+'">'+bub+
     '<button type="button" class="mc-btn" data-act="mascot" data-fid="mc-btn" aria-label="Descargar tu tablero, tus tareas y tu avance en PDF. No lo guardamos en ningún servidor: al cerrar la pestaña, se borra.">'+MASCOT_SVG+'</button></div>';
 }
@@ -1507,6 +1522,8 @@ const A={
   'onb-create'(){markSeen();A.new();},
   'onb-example'(){markSeen();openBoard('ejemplo');},
   menu(){S.menu=!S.menu;render();},
+  'bub-min'(){S.bubMin=true;render();const o=$('[data-fid=bub-max]');if(o)o.focus();},
+  'bub-max'(){S.bubMin=false;render();},
   theme(){const r=document.documentElement;r.dataset.theme=isDark()?'light':'dark';render();},
   new(){
     const b=blankBoard();const pal=GCOL.filter(c=>c[0]);b.goalColor=pal[Math.floor(Math.random()*pal.length)][0];

@@ -45,3 +45,4 @@
 2026-10-09 - Los ajustes para celular no cambian escritorio: el onboarding de celular (hasta 859px) tiene marcado propio y la barra con menú hamburguesa y sin pie aplica hasta 640px. Motivo: pedido explícito del usuario.
 2026-10-09 - En celular no hay pie de página: sus links legales y el crédito van en el menú hamburguesa. Motivo: ahorrar espacio; todo sigue accesible.
 2026-10-09 - En el onboarding de celular el botón principal es blanco con borde magenta y va fijo abajo. Es una excepción a las acciones como links subrayados. Motivo: pedido de producto para que se vea y se alcance.
+2026-10-09 - En celular la nube del personaje se puede achicar con una × a "頑張って！" y "Descargar tu tablero SAKURA 64", y los chips de pilares van en una fila deslizable. El estado de la nube no se guarda (vuelve completa al recargar). Motivo: pedido de producto para liberar pantalla en celular.

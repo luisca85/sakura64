@@ -1,6 +1,6 @@
 # Feature: Ajustes para celular  ·  id: movil
 Historia de usuario: Como lector que abre el link desde el celular, quiero que la introducción y la navegación entren cómodas en la pantalla, para avanzar sin buscar botones ni perder espacio.
-Objetivo: adaptar a celular el onboarding (título arriba, stepper con progreso y botón fijo abajo), la barra de navegación (menú hamburguesa) y el pie (se quita). Solo cambia celular: escritorio queda igual. Aprobado en la exploración (rama `explorar/ajustes-movil`, commits 4e9e22c a 117f139).
+Objetivo: adaptar a celular el onboarding (título arriba, stepper con progreso y botón fijo abajo), la barra de navegación (menú hamburguesa), el pie (se quita), la nube del personaje (se puede achicar) y los chips de pilares (fila deslizable). Solo cambia celular: escritorio queda igual. Aprobado en la exploración (rama `explorar/ajustes-movil`, commits 4e9e22c a 117f139; y rama `explorar/nube-movil`, commits b163b58 a 10b411a).
 
 Criterios de aceptación:
 Onboarding (hasta 859px)
@@ -17,17 +17,25 @@ Barra y pie (hasta 640px)
   - Dado el botón ☰, cuando lo toco, entonces se abre debajo un menú con "Inicio", "Cómo funciona", "Modo oscuro" o "Modo claro", los links "Privacidad", "Términos de uso" y "Créditos y licencias", y "Diseñado por Luis Carlos Romero León · uxuaria.com"; el ☰ pasa a ✕ y `aria-expanded` a "true".
   - Dado el menú abierto, cuando elijo una opción, toco afuera o presiono Esc, entonces se cierra (con Esc el foco vuelve al ☰).
   - Dada cualquier pantalla en celular, cuando bajo hasta el final, entonces no hay pie de página.
+Personaje (hasta 640px)
+  - Dada la nube del personaje, cuando la miro, entonces tiene una × arriba a la derecha ("Cerrar mensaje"); tocar el resto de la nube o el personaje abre el formulario como siempre.
+  - Dada la ×, cuando la toco, entonces la nube queda chica (225×59px, un renglón) con "頑張って！" y el link "Descargar tu tablero SAKURA 64", y el foco pasa al link.
+  - Dado el link "Descargar tu tablero SAKURA 64", cuando lo toco, entonces vuelve la nube completa (no descarga ni abre el formulario).
+  - Dada la nube chica, cuando cambio de tablero, entonces sigue chica hasta reabrirla; al recargar la página vuelve completa.
+Chips de pilares (hasta 640px)
+  - Dado el Mapa de a un pilar, cuando miro los chips, entonces van en una sola fila deslizable de costado, a sangre con los bordes y sin barra visible.
+  - Dado que elijo un chip, cuando se redibuja, entonces la fila se desplaza para dejar el elegido a la vista.
 Escritorio
   - Dado un ancho de 860px o más (onboarding) o de 641px o más (barra y pie), cuando lo miro, entonces se ve igual que antes de este cambio.
-Alcance: `onbMob`, `onbHTML` (versión celular), `updateOnb` (rama celular), `ONB`, resize con `wasOnbMob`, `barHTML` (`.themebtn`, `.burger`, `.mmenu`), estado `S.menu`, acción `menu`, cierre en el click global y Esc; CSS `.onb-head`, `.ostep`, `.os`, `.ostep-n`, `.ob-cta`, `.ob-back`, `.ob-link`, `.onb-skip`, `.onb-ex`, `.mmenu`, `.mitem`, `.msub`, `.mcred`, `.foot` oculto hasta 640px.
-Fuera de alcance / No tocar: escritorio, contenido del onboarding, el tablero, el asistente y la nube del personaje en celular.
+Alcance: `mascotHTML` (`.mc-full`, `.mc-bx`, `.mc-open`, estado `S.bubMin`, acciones `bub-min` y `bub-max`), `.chips` deslizable y su ajuste de `scrollLeft` en `render`, `onbMob`, `onbHTML` (versión celular), `updateOnb` (rama celular), `ONB`, resize con `wasOnbMob`, `barHTML` (`.themebtn`, `.burger`, `.mmenu`), estado `S.menu`, acción `menu`, cierre en el click global y Esc; CSS `.onb-head`, `.ostep`, `.os`, `.ostep-n`, `.ob-cta`, `.ob-back`, `.ob-link`, `.onb-skip`, `.onb-ex`, `.mmenu`, `.mitem`, `.msub`, `.mcred`, `.foot` oculto hasta 640px.
+Fuera de alcance / No tocar: escritorio, contenido del onboarding, el asistente y el formulario de suscripción.
 Dependencias: `legal`, `theme`, `home`, `onb`, `markSeen`, `.lnk`.
 Estados (UI): menú abierto o cerrado. Sin carga ni error (todo es local).
 Diseño: N/A (aprobado en la exploración).
 Conocido:
   - Sin pie en celular no se ve la frase "SAKURA 64 es una herramienta gratuita y sin fines comerciales"; sigue en Términos.
   - El botón principal relleno de borde magenta es una excepción a "acciones principales como links subrayados", solo en el onboarding en celular.
-  - Pendientes de celular: la nube del personaje tapa contenido, la grilla del tablero aparece muy abajo, el botón del asistente queda lejos y la ayuda de la grilla dice "estado".
+  - Pendientes de celular: el botón del asistente queda lejos y la ayuda de la grilla dice "estado".
 Definición de hecho: la del AGENTS.md, más:
   - Recorrer los 4 pasos del onboarding en 320, 375 y 414px y en 1280px (igual que antes).
   - Abrir y cerrar el menú en el inicio, el tablero y la página legal, en claro y en oscuro.
