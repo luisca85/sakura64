@@ -24,3 +24,8 @@
 2026-10-08 - La app se llama "Objetivo 64"; "Harada" queda solo como mención de inspiración en los términos. Motivo: evitar usar como nombre del producto el de un método y una persona con los que no hay afiliación.
 2026-10-08 - Objetivo 64 es gratuita y sin fines comerciales: no se cobra, no hay publicidad, no se venden ni comparten datos y no hay productos ni servicios pagos. Se declara en el pie, en Privacidad y en Términos. Motivo: decisión de producto.
 2026-10-08 - Las claves internas de `sessionStorage` (`harada-v1`, `harada-seen`) no se renombran. Motivo: no se ven y cambiarlas haría perder los tableros abiertos en la sesión.
+2026-10-09 - Lenguaje visual inspirado en la web japonesa "amable" (referencia choooodoii.com): Noto Sans JP, bordes finos sin sombras, píldoras de 2px, acento amarillo, globos de diálogo. Motivo: pedido de producto para una interfaz ordenada y liviana.
+2026-10-09 - Patrón fijo de pantalla: navegación, subheader a todo el ancho con papel cuadriculado y zona de trabajo. Motivo: jerarquía clara y repetible entre herramientas y contenido.
+2026-10-09 - Las acciones principales son links subrayados con flecha, no botones rellenos. Motivo: coherencia con la referencia.
+2026-10-09 - Pilares en rojo, naranja, amarillo, verde manzana, turquesa, cian, azul y magenta, con color de texto por pilar (`--f1`..`--f8`, `PFG`). Reemplaza la paleta anterior. Motivo: pedido de producto; el texto por pilar asegura contraste de 4.5:1.
+2026-10-09 - Íconos del set "Japan Icons (Community)" de Figma, incrustados en `index.html`; logo de flor de sakura con pistilos rojos. Motivo: identidad japonesa coherente; incrustados para que la app funcione sin servidor. Licencia: A CONFIRMAR.
