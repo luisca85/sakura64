@@ -11,7 +11,7 @@ Nombre
   - Dado el texto visible de la app, cuando lo recorro, entonces "Harada" solo aparece en la sección Inspiración de los términos.
   - Dados tableros guardados en la sesión antes del cambio, cuando recargo, entonces siguen ahí (las claves internas `harada-v1` y `harada-seen` no cambian).
 Acceso
-  - Dado el pie de página de cualquier pantalla con encabezado, cuando lo miro, entonces veo "SAKURA 64 es una herramienta gratuita y sin fines comerciales." y los links "Privacidad", "Términos de uso" y "Créditos y licencias".
+  - Dado el pie de página de cualquier pantalla con encabezado en más de 640px (en celular los links van en el menú hamburguesa; ver `ajustes-movil.md`), cuando lo miro, entonces veo "SAKURA 64 es una herramienta gratuita y sin fines comerciales." y los links "Privacidad", "Términos de uso" y "Créditos y licencias".
   - Dado un link del pie, cuando lo toco, entonces se abre la página legal en esa sección, arriba de todo.
   - Dada la página legal, cuando toco otra sección en su barra, entonces cambia el contenido y la sección actual queda marcada (`aria-current="page"`).
 Contenido

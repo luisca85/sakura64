@@ -42,3 +42,6 @@
 2026-10-09 - La prioridad de cada acción se ve en la grilla (Alta, Media y Baja) y se elige dentro del cuadro de la acción. Motivo: pedido de producto.
 2026-10-09 - "Completada" en una tarea es por día (`done[hoy]`), en el panel y al crearla. No se agrega un estado permanente. Motivo: reutilizar el modelo de tareas recurrentes sin cambiar datos.
 2026-10-09 - Se exporta desde el personaje flotante; se quita "Exportar PDF" del subheader. La nube aclara que el tablero no se guarda en ningún servidor. Motivo: pedido de producto para motivar la descarga.
+2026-10-09 - Los ajustes para celular no cambian escritorio: el onboarding de celular (hasta 859px) tiene marcado propio y la barra con menú hamburguesa y sin pie aplica hasta 640px. Motivo: pedido explícito del usuario.
+2026-10-09 - En celular no hay pie de página: sus links legales y el crédito van en el menú hamburguesa. Motivo: ahorrar espacio; todo sigue accesible.
+2026-10-09 - En el onboarding de celular el botón principal es blanco con borde magenta y va fijo abajo. Es una excepción a las acciones como links subrayados. Motivo: pedido de producto para que se vea y se alcance.

@@ -18,7 +18,7 @@ Tablero
 Inicio
   - Dadas las tarjetas, cuando las miro, entonces el ícono va en magenta sobre un fondo de acento muy suave.
 Pie
-  - Dada cualquier pantalla, cuando miro el pie, entonces es una franja blanca alineada al contenedor, con letra de 12px y "Diseñado por Luis Carlos Romero León · uxuaria.com" con link.
+  - Dada cualquier pantalla en más de 640px, cuando miro el pie, entonces es una franja blanca alineada al contenedor, con letra de 12px y "Diseñado por Luis Carlos Romero León · uxuaria.com" con link.
 Alcance: `HAIKUS`, `HK`, `haikuHTML`, `haikuTick`, `subHTML`, `homeHTML`, CSS `.haiku`, `.hk-*`; `A.new` (color al azar), `GCOL[0]=['','Blanco']`, `gcs()`, `--goal-bg`/`--goal-fg`, `wizHTML` (sin paleta, `.wside`), `input.datepick` con `showPicker()`; `.bd-title`, `.bd-main`; `.card-ico`; `footHTML`, `.foot`, `.foot-cred`.
 Fuera de alcance / No tocar: el selector de color del panel del objetivo (sigue), datos y persistencia.
 Dependencias: `subHTML` (patrón de pantalla), `GCOL`, `cardHTML`, `boardIcon`.

@@ -71,4 +71,5 @@ LATAM que la prueban desde un link público de Uxuaria.
    resumen). "Copiar resumen como texto" copia (o muestra el textarea).
 5. Abrir el ejemplo: no tiene botón de eliminar; "Duplicar como mío" crea una copia editable.
 6. Eliminar un tablero propio y usar "Deshacer".
-7. Repetir 2 a 4 en ancho de celular (375px) y en modo oscuro.
+7. Repetir 1 a 4 en ancho de celular (375px) y en modo oscuro: onboarding con
+   botón fijo abajo y menú ☰ con Inicio, Cómo funciona, modo y legales.

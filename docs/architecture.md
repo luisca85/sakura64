@@ -31,6 +31,8 @@
 - Personaje y boletín: `MASCOT_SVG`, `mascotHTML` (estado `S.mascot`: idle, form,
   done), `subscribe` (POST `no-cors` a `NEWSLETTER_URL`, formulario público de
   Brevo), `isSubscribed` (clave `harada-sub`).
+- Celular: `onbMob` elige el onboarding de celular (hasta 859px); `barHTML` suma el menú
+  hamburguesa (`S.menu`, `.mmenu`) y el pie se oculta hasta 640px.
 - Haikus: `HAIKUS`, `haikuHTML` dentro de `subHTML`, `haikuTick` cada 60 ms.
 - Eventos: objeto `A` de acciones despachadas por `data-act`; inputs con `data-bind`;
   teclado en la grilla (flechas); cambio de ancho re-renderiza.
