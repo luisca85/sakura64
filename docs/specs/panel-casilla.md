@@ -18,10 +18,10 @@ Panel del pilar
   - Dado el panel de un pilar, cuando presiono Enter en una casilla del bloque, entonces paso a la siguiente en orden (pilar, acción 1 a 8).
   - Dado el panel de un pilar, cuando toco "Vaciar pilar", entonces se borra solo el nombre del pilar (sus acciones y tareas se conservan y siguen editables) y "Deshacer" lo restaura.
 Panel de la acción
-  - Dado el panel de una acción, cuando lo abro, entonces veo el bloque de la acción editable (con su número y su pilar), prioridad, estado, sus tareas con el formulario para agregar y "Vaciar casilla".
+  - Dado el panel de una acción, cuando lo abro, entonces veo el bloque de la acción editable (con su pilar, su prioridad y la casilla "Acción lograda"; ver `panel-de-tareas.md`), sus tareas con el formulario para agregar y "Vaciar casilla".
   - Dado el panel de una acción, cuando agrego una tarea, entonces aparece en la lista, en "Tus tareas para hoy" si corresponde y como número en la casilla de la grilla.
 Disposición
-  - Dado un ancho mayor a 820px, cuando miro un panel, entonces el bloque va a la izquierda (hasta 540px y nunca más alto que la ventana) y la columna derecha ocupa todo el ancho restante, sin hueco en el medio; prioridad y estado se reparten a lo ancho.
+  - Dado un ancho mayor a 820px, cuando miro un panel, entonces el bloque va a la izquierda (hasta 540px y nunca más alto que la ventana) y la columna derecha ocupa todo el ancho restante, sin hueco en el medio.
   - Dado un ancho de 375px, cuando miro un panel, entonces el bloque va arriba, las opciones abajo y no hay desplazamiento horizontal.
 
 Alcance: `S.det`, `openDet`, `detHTML`, `detNavHTML`, `detSib`, `detName`, `detBtn`, acciones `det-go`, `det-close`, `selpillar`, `selaction`, `gopillar` (ahora abre el panel del pilar), `pri`, `st`, `clear`, `tasksSection` dentro del panel, `history.pushState`/`popstate` con `{det, b}`, `openBoard` (crea la entrada de la grilla), CSS `.det`, `.det-nav`, `.crumbs`, `.det-head`, `.wgoal.dact`, `.dtasks` y la regla de columnas para más de 820px.

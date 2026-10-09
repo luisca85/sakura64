@@ -38,3 +38,7 @@
 2026-10-09 - El color del objetivo se asigna al azar al crear el tablero; el asistente ya no tiene selector y "sin color" es blanco con borde de tinta. Motivo: quitar una decisión innecesaria al arrancar.
 2026-10-09 - El pie lleva el crédito "Diseñado por Luis Carlos Romero León" con link a uxuaria.com. Motivo: pedido del usuario.
 2026-10-09 - Publicación en Cloudflare Pages conectado a un repositorio de GitHub, en `sakura64.uxuaria.com`; `LEGAL_URL` del PDF apunta a esa dirección. Motivo: elección del usuario.
+2026-10-09 - El estado de una acción se marca con una sola casilla "Acción lograda" (Lograda o Sin empezar); "En curso" deja de elegirse en el panel. Motivo: pedido de producto para simplificar.
+2026-10-09 - La prioridad de cada acción se ve en la grilla (Alta, Media y Baja) y se elige dentro del cuadro de la acción. Motivo: pedido de producto.
+2026-10-09 - "Completada" en una tarea es por día (`done[hoy]`), en el panel y al crearla. No se agrega un estado permanente. Motivo: reutilizar el modelo de tareas recurrentes sin cambiar datos.
+2026-10-09 - Se exporta desde el personaje flotante; se quita "Exportar PDF" del subheader. La nube aclara que el tablero no se guarda en ningún servidor. Motivo: pedido de producto para motivar la descarga.

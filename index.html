@@ -71,6 +71,18 @@ button{cursor:pointer}
 .btn.sm{min-height:34px;padding:5px 12px;border-radius:2px;font-size:13px}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .btnrow{display:flex;flex-wrap:wrap;gap:8px}
+.btnrow.end{justify-content:flex-end}
+.btnrow.split{justify-content:space-between;align-items:center}
+.dq{font-size:18px;line-height:1.4;text-wrap:balance}
+.dact-foot{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 16px}
+.dact-pri{display:flex;flex-direction:column;gap:4px}
+.dact-pri .lbl{font-size:13px}
+.dact-pri .seg button{padding:6px 12px;font-size:13px}
+.dact-done{display:flex;align-items:center;gap:2px;font-size:14px;font-weight:700;cursor:pointer}
+.dact-done .check{color:var(--pf)}
+.taskform .dact-done{font-weight:500}
+.taskform .check{color:var(--pf);margin:-6px 0 -6px -10px}
+@media (max-width:820px){.det .wgoal.dact{aspect-ratio:auto}.det .wgoal.dact textarea{min-height:140px;padding-top:24px}}
 .link{background:none;border:0;padding:6px 0;color:var(--muted);font-weight:700;min-height:36px}
 .link:hover{color:var(--ink)}
 
@@ -121,7 +133,9 @@ button{cursor:pointer}
 .mc-btn:focus-visible{outline:3px solid var(--focus);outline-offset:4px;border-radius:12px}
 @keyframes mc-hop{0%,55%,100%{transform:translateY(0) scale(1,1)}62%{transform:translateY(0) scale(1.06,.94)}75%{transform:translateY(-12px) scale(.97,1.03)}88%{transform:translateY(0) scale(1.04,.96)}}
 .mc-bub,.mc-card{position:relative;background:var(--surface);color:var(--ink);border:1px solid var(--ink);border-radius:5px}
-.mc-bub{padding:7px 14px;font:700 14px var(--f-body);margin-right:4px;cursor:pointer}
+.mc-bub{padding:8px 14px;font:700 14px/1.35 var(--f-body);margin-right:4px;cursor:pointer;max-width:250px;text-align:left}
+.mc-note{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-top:4px}
+.mc-jp{display:block;font-size:11px;font-weight:500;color:var(--accent);letter-spacing:.08em;margin-bottom:2px}
 .mc-bub::before,.mc-bub::after,.mc-card::before,.mc-card::after{content:"";position:absolute;right:34px;border:7px solid transparent}
 .mc-bub::before,.mc-card::before{bottom:-15px;border-top-color:var(--ink)}
 .mc-bub::after,.mc-card::after{bottom:-13px;border-top-color:var(--surface)}
@@ -137,7 +151,7 @@ button{cursor:pointer}
 .mc-x{position:absolute;top:6px;right:8px;width:30px;height:30px;border:0;background:none;font-size:20px;line-height:1;color:var(--muted);cursor:pointer}
 .mc-x:hover{color:var(--ink)}
 .bd{padding-bottom:140px}
-@media (max-width:520px){.mascot{right:10px;bottom:10px}.mc-btn{width:60px;height:68px}.mc-bub{font-size:13px;padding:5px 11px}}
+@media (max-width:520px){.mascot{right:10px;bottom:10px}.mc-btn{width:60px;height:68px}.mc-bub{font-size:13px;padding:6px 11px;max-width:190px}}
 @media (prefers-reduced-motion:reduce){.mc-svg{animation:none}.mc-card{animation:none}}
 /* haikus del subheader */
 .sub-in,.band>.wrap,.bd-top{position:relative}
@@ -280,6 +294,8 @@ button.crumb:hover{background:var(--surface2);color:var(--ink)}
 .mk.inline{position:static;width:16px;height:16px;flex:none}
 .pri{position:absolute;left:3px;top:3px;background:var(--ink);color:var(--bg);border-radius:4px;padding:0 5px;font-size:9px;font-weight:700;line-height:15px}
 .board.single .pri{font-size:11px;line-height:18px;left:6px;top:6px}
+.pri.p-media{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.pri.p-baja{background:var(--surface);color:var(--muted);box-shadow:inset 0 0 0 1px var(--line)}
 .cell{cursor:text}
 .cell textarea.ctx{display:block;width:100%;margin:0;padding:0;border:0;background:transparent;color:inherit;font:inherit;line-height:inherit;text-align:center;resize:none;outline:none;overflow:hidden}
 .cell textarea.ctx::placeholder{color:var(--muted);opacity:.6;font-size:1.5em}
@@ -311,6 +327,9 @@ textarea{resize:vertical;line-height:1.4}
 .tasks{display:flex;flex-direction:column;gap:6px}
 .task{display:flex;align-items:center;gap:8px;border:1px solid var(--line2);border-radius:5px;padding:8px 8px 8px 12px;background:var(--bg)}
 .task .tm{flex:1;min-width:0}
+.task .check{color:var(--pf);margin:-6px 0}
+.task:has(.check){padding-left:2px}
+.task.is-done .tm b{text-decoration:line-through;color:var(--muted)}
 .task .tm b{display:block;overflow-wrap:anywhere}
 .task .tm span{font-size:13px;color:var(--muted)}
 .taskform{display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--line2);padding-top:12px}
@@ -651,7 +670,7 @@ const isDark=()=>{
   if(t)return t==='dark';
   return !!(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);
 };
-function resetDraft(){S.draft={title:'',freq:'daily',days:[0,2,4]};}
+function resetDraft(){S.draft={title:'',freq:'daily',days:[0,2,4],done:false};}
 
 /* ---------- html builders ---------- */
 const PISTILS=[[40,20.8,3],[60.65,34.4,3],[53.7,59.45,3],[26.3,59.45,3],[19.35,34.4,3],[40,42.3,6.8]];
@@ -805,7 +824,7 @@ function boardHTML(b){
     (b.example?'<div class="banner"><p>Este es un tablero de ejemplo con datos inventados. Editalo para explorar o duplicalo y empezá el tuyo.</p><button class="btn sm" data-act="dup" data-id="'+b.id+'" data-fid="dup-ex">Duplicar como mío</button></div>':'')+
     '<div class="tabsrow"><div class="tabs" role="tablist" aria-label="Secciones del tablero">'+
     tabs.map(t=>'<button class="tab" role="tab" aria-selected="'+(S.tab===t[0])+'" data-act="tab" data-v="'+t[0]+'" data-fid="tab-'+t[0]+'">'+jicon(t[2],20)+'<span>'+t[1]+'</span>'+(t[3]?'<span class="bdg" aria-label="'+t[3]+' pendientes">'+t[3]+'</span>':'')+'</button>').join('')+
-    '</div><button class="btn sm primary btn-ic hdr-btn" data-act="export" data-fid="export-top">'+ic(IC.down)+'Exportar PDF</button></div></header></div><section class="wrap bd">'+body+'</section>'+mascotHTML();
+    '</div></div></header></div><section class="wrap bd">'+body+'</section>'+mascotHTML();
 }
 function toolbarHTML(b){
   let h='<div class="toolbar">';
@@ -837,7 +856,7 @@ function cellHTML(b,r,c){
   else{const a=b.actions[x.k][x.i];label='Pilar '+(x.k+1)+', acción '+(x.i+1);
     if(txt.trim()){
       const nt=b.tasks.filter(t=>t.k===x.k&&t.i===x.i).length;
-      extra=(a.pri==='alta'?'<span class="pri">Alta</span>':'')+stIcon(a.st,false)+(nt?'<span class="ntk" title="'+nt+(nt===1?' tarea':' tareas')+'">'+nt+'</span>':'');
+      extra='<span class="pri p-'+a.pri+'" title="Prioridad '+PRI[a.pri].toLowerCase()+'">'+PRI[a.pri]+'</span>'+stIcon(a.st,false)+(nt?'<span class="ntk" title="'+nt+(nt===1?' tarea':' tareas')+'">'+nt+'</span>':'');
     }}
   return '<div class="'+cellCls(b,x)+'" style="--pc:'+(x.t==='goal'?'var(--ink);'+gcs(b):pcv(x.k)+';--pf:'+pfv(x.k))+'" data-r="'+r+'" data-c="'+c+'">'+
     '<textarea class="ctx" data-bind="cell:'+r+':'+c+'" data-fid="c-'+r+'-'+c+'" maxlength="'+max+'" rows="1" placeholder="+" aria-label="'+esc(label)+'" title="'+esc(txt)+'">'+esc(txt)+'</textarea>'+extra+
@@ -935,13 +954,14 @@ function detHTML(b,s){
       '<div class="btnrow"><button class="btn sm ghost danger" data-act="clear" data-fid="clear">Vaciar pilar</button></div></div></div>';
   }else{
     const k=s.k,i=s.i,a=b.actions[k][i];
-    h+='<div class="wgrid"><div class="wstage"><div class="wgoal dact" style="--pc:'+pcv(k)+';--pf:'+pfv(k)+'"><div class="wgoal-h"><label for="d-text">Acción '+(i+1)+' · '+esc(b.pillars[k].trim()||'Pilar '+(k+1))+'</label>'+tipHTML('Una acción concreta y chica, de las que podés hacer esta semana.')+'</div>'+
-      '<textarea id="d-text" class="wct" data-bind="sel" data-fid="d-text" maxlength="80" placeholder="Ej.: probar 3 recetas nuevas este mes">'+esc(a.t)+'</textarea></div></div>'+
+    h+='<div class="wgrid"><div class="wstage"><div class="wgoal dact" style="--pc:'+pcv(k)+';--pf:'+pfv(k)+'"><div class="wgoal-h"><label for="d-text">Pilar '+(k+1)+(b.pillars[k].trim()?' · '+esc(b.pillars[k].trim()):'')+'</label>'+tipHTML('Una acción concreta y chica, de las que podés hacer esta semana.')+'</div>'+
+      '<textarea id="d-text" class="wct" data-bind="sel" data-fid="d-text" maxlength="80" placeholder="Ej.: probar 3 recetas nuevas este mes">'+esc(a.t)+'</textarea>'+
+      '<div class="dact-foot"><div class="dact-pri"><span class="lbl" id="pri-l">Prioridad</span>'+segHTML('Prioridad','pri',a.pri,[['alta','Alta'],['media','Media'],['baja','Baja']],'pri')+'</div>'+
+      '<label class="dact-done"><button type="button" class="check" role="checkbox" aria-checked="'+(a.st==='lograda')+'" aria-labelledby="done-l" data-act="st" data-v="'+(a.st==='lograda'?'sin':'lograda')+'" data-fid="st-done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></button><span id="done-l">Acción lograda</span></label></div></div></div>'+
       '<div class="wside">'+
-      '<div class="field"><span class="lbl">Prioridad</span>'+segHTML('Prioridad','pri',a.pri,[['alta','Alta'],['media','Media'],['baja','Baja']],'pri')+'</div>'+
-      '<div class="field"><span class="lbl">Estado</span>'+segHTML('Estado','st',a.st,[['sin','Sin empezar'],['curso','En curso'],['lograda','Lograda']],'st')+'</div>'+
-      '<div class="dtasks">'+tasksSection(b,k,i)+'</div>'+
-      '<div class="btnrow"><button class="btn sm ghost danger" data-act="clear" data-fid="clear">Vaciar casilla</button></div></div></div>';
+      '<h2 class="dq">¿Qué tareas vas a realizar para que esta acción sea verdad?</h2>'+
+      '<div class="dtasks" style="--pc:'+pcv(k)+';--pf:'+pfv(k)+'">'+tasksSection(b,k,i)+'</div>'+
+      '<div class="btnrow split"><button class="btn sm ghost danger" data-act="clear" data-fid="clear">Vaciar casilla</button><button class="btn primary" data-act="det-close" data-fid="det-back">Volver al tablero principal</button></div></div></div>';
   }
   return h+'</div>';
 }
@@ -961,8 +981,10 @@ function tasksSection(b,k,i){
   const list=b.tasks.filter(t=>t.k===k&&t.i===i);
   let h='<h3>Tareas de esta acción</h3>';
   if(list.length){
-    h+='<ul class="tasks">'+list.map(t=>{const n=streak(t);
-      return '<li class="task"><div class="tm"><b>'+esc(t.title)+'</b><span>'+esc(freqLabel(t))+(n>0?', racha de '+n+(n===1?' día':' días'):'')+'</span></div>'+
+    const key=dk(today0());
+    h+='<ul class="tasks">'+list.map(t=>{const n=streak(t),dn=!!t.done[key];
+      return '<li class="task'+(dn?' is-done':'')+'" style="--pc:'+pcv(k)+';--pf:'+pfv(k)+'"><button class="check" role="checkbox" aria-checked="'+dn+'" data-act="toggle" data-id="'+t.id+'" data-fid="dchk-'+t.id+'" aria-label="Completada hoy: '+esc(t.title)+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></button>'+
+      '<div class="tm"><b>'+esc(t.title)+'</b><span>'+esc(freqLabel(t))+(dn?', completada hoy':'')+(n>0?', racha de '+n+(n===1?' día':' días'):'')+'</span></div>'+
       '<button class="iconbtn sm" data-act="deltask" data-id="'+t.id+'" data-fid="dt-'+t.id+'" aria-label="Eliminar tarea: '+esc(t.title)+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button></li>';}).join('')+'</ul>';
   }else{
     h+='<p class="note">Todavía no hay tareas. Una tarea es algo concreto que repetís, por ejemplo caminar 30 minutos.</p>';
@@ -975,7 +997,8 @@ function tasksSection(b,k,i){
   if(d.freq==='days'){
     h+='<div class="days" role="group" aria-label="Días de la semana">'+DAYS1.map((l,n)=>'<button type="button" class="day" data-act="day" data-v="'+n+'" data-fid="day-'+n+'" aria-pressed="'+(d.days.indexOf(n)>=0)+'" aria-label="'+DAYS_ONE[n].replace('Los ','')+'">'+l+'</button>').join('')+'</div>';
   }
-  return h+'<button class="btn primary" type="submit" data-fid="t-add">Agregar tarea</button></form>';
+  return h+'<div class="btnrow split"><label class="dact-done"><button type="button" class="check" role="checkbox" aria-checked="'+!!d.done+'" aria-labelledby="t-done-l" data-act="draft-done" data-fid="t-done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></button><span id="t-done-l">Ya la completé hoy</span></label>'+
+    '<button class="btn primary" type="submit" data-fid="t-add">Agregar tarea</button></div></form>';
 }
 
 /* today */
@@ -1381,9 +1404,9 @@ function mascotHTML(){
       '<p class="mc-err" id="mc-err" role="alert"></p>'+
       '<button class="btn primary" type="submit" data-fid="mc-send">Suscribirme y descargar</button></form>';
   else if(m==='done')bub='<div class="mc-card mc-done" role="status"><button type="button" class="mc-x" data-act="mascot-close" data-fid="mc-x" aria-label="Cerrar">×</button><p class="mc-t">¡Gracias por suscribirte!</p><p class="mc-p">Tu PDF se está descargando.</p></div>';
-  else bub='<button type="button" class="mc-bub" data-act="mascot" tabindex="-1" aria-hidden="true">Descargar PDF</button>';
+  else bub='<button type="button" class="mc-bub" data-act="mascot" tabindex="-1" aria-hidden="true"><span class="mc-jp" lang="ja">頑張って！</span>Llevate tu tablero, tus tareas y tu avance en un PDF<span class="mc-note">No lo guardamos en ningún servidor: al cerrar la pestaña, se borra.</span></button>';
   return '<div class="mascot'+(m!=='idle'?' open':'')+'">'+bub+
-    '<button type="button" class="mc-btn" data-act="mascot" data-fid="mc-btn" aria-label="Descargar PDF">'+MASCOT_SVG+'</button></div>';
+    '<button type="button" class="mc-btn" data-act="mascot" data-fid="mc-btn" aria-label="Descargar tu tablero, tus tareas y tu avance en PDF. No lo guardamos en ningún servidor: al cerrar la pestaña, se borra.">'+MASCOT_SVG+'</button></div>';
 }
 async function exportPDF(){
   const b=cur();if(!b)return;
@@ -1457,6 +1480,7 @@ const A={
     const removed=b.tasks.splice(i,1)[0];render();
     toast('Tarea eliminada.',()=>{b.tasks.splice(i,0,removed);render();});
   },
+  'draft-done'(){S.draft.done=!S.draft.done;render();},
   toggle(el){
     const b=cur();if(!b)return;
     const t=b.tasks.find(x=>x.id===el.dataset.id);if(!t)return;
@@ -1555,8 +1579,8 @@ document.addEventListener('submit',e=>{
   const title=d.title.trim();
   if(!title){toast('Escribí el nombre de la tarea.');focusSoon('#t-title');return;}
   if(d.freq==='days'&&!d.days.length){toast('Elegí al menos un día de la semana.');return;}
-  b.tasks.push({id:uid(),k:s.k,i:s.i,title:title,freq:d.freq,days:d.freq==='days'?d.days.slice().sort():[],done:{},start:dk(today0())});
-  S.draft.title='';render();focusSoon('#t-title');toast('Tarea agregada.');
+  b.tasks.push({id:uid(),k:s.k,i:s.i,title:title,freq:d.freq,days:d.freq==='days'?d.days.slice().sort():[],done:d.done?{[dk(today0())]:true}:{},start:dk(today0())});
+  S.draft.title='';S.draft.done=false;render();focusSoon('#t-title');toast('Tarea agregada.');
 });
 document.addEventListener('keydown',e=>{
   const t=e.target;

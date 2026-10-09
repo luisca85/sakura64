@@ -63,11 +63,11 @@ LATAM que la prueban desde un link público de Uxuaria.
 2. Crear un tablero con el asistente en bloques (objetivo y pilares); al
    terminar se abre la grilla. Recargar: persiste.
 3. En el Mapa, escribir una acción directo en la grilla (Enter pasa a la siguiente),
-   abrir su panel con el botón ↗, cambiar prioridad y estado, agregar una tarea
-   "Lun, Mié, Vie"; en "Tus tareas para hoy" marcarla si corresponde y ver la racha.
+   abrir su panel con el botón ↗, cambiar prioridad y "Acción lograda", agregar una
+   tarea "Lun, Mié, Vie" y marcarla en el panel; en "Tus tareas para hoy" marcarla si corresponde y ver la racha.
    Volver con el "atrás" del navegador: panel, después grilla.
 4. Tocar el personaje: pide el correo (validar errores sin enviar); con
-   "Exportar PDF" ya suscripto, descarga un PDF de 3 páginas (tablero, tareas,
+   el personaje ya suscripto, descarga un PDF de 3 páginas (tablero, tareas,
    resumen). "Copiar resumen como texto" copia (o muestra el textarea).
 5. Abrir el ejemplo: no tiene botón de eliminar; "Duplicar como mío" crea una copia editable.
 6. Eliminar un tablero propio y usar "Deshacer".

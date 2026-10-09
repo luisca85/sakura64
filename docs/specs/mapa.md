@@ -13,15 +13,15 @@ Grilla
   - Dado el foco en una casilla, cuando presiono Esc, entonces salgo del texto y el foco queda en el botón de abrir panel.
   - Dada una casilla, cuando paso el mouse o estoy escribiendo en ella, entonces aparece el botón ↗; al tocarlo o con Ctrl+Enter (Cmd+Enter en Mac) se abre su panel.
   - Dado un texto que no entra en la casilla, cuando lo miro, entonces se corta y el texto completo se ve al pasar el mouse y en el panel.
-  - Dada una acción con tareas, prioridad alta o estado, cuando la miro, entonces muestra el número de tareas, la marca "Alta" y el ícono de estado.
+  - Dada una acción con tareas, prioridad alta o estado, cuando la miro, entonces muestra el número de tareas, su prioridad (Alta, Media o Baja; ver `panel-de-tareas.md`) y el ícono de estado.
   - Dado un ancho menor a 760px, cuando abro el Mapa, entonces se ve un bloque a la vez con chips para cambiar y las casillas siguen siendo editables.
 Encabezado
   - Dado un tablero abierto, cuando lo miro, entonces veo una tarjeta con "Volver al inicio" con ícono, el color y el texto del objetivo, 3 cifras (acciones definidas de 64, logradas y días para la meta o "Sin fecha"), una barra de progreso general y las pestañas.
   - Dada la barra de progreso general, cuando la miro, entonces la parte clara son las acciones definidas y la sólida las logradas sobre 64, con el porcentaje logrado al lado.
-  - Dadas las pestañas, cuando las miro, entonces se llaman "Mapa", "Tus tareas para hoy" y "Mi avance", con ícono, y "Exportar PDF" queda a la derecha.
+  - Dadas las pestañas, cuando las miro, entonces se llaman "Mapa", "Tus tareas para hoy" y "Mi avance", con ícono (la exportación va en el personaje flotante).
   - Dadas tareas pendientes para hoy, cuando miro la pestaña "Tus tareas para hoy", entonces muestra cuántas faltan cumplir.
   - Dado el tablero de ejemplo, cuando lo abro, entonces veo la etiqueta "Ejemplo" y el aviso con "Duplicar como mío", y no se puede eliminar.
-  - Dado un ancho de 375px, cuando miro el encabezado, entonces las 3 pestañas entran sin desplazamiento horizontal y "Exportar PDF" va debajo a todo el ancho.
+  - Dado un ancho de 375px, cuando miro el encabezado, entonces las 3 pestañas entran sin desplazamiento horizontal.
   - Dado el modo oscuro, cuando elijo "Un pilar a la vez", entonces el chip "Objetivo" seleccionado se lee.
 
 Alcance: `mapHTML` (sin inspector), `gridHTML`, `blockHTML`, `cellHTML`, `cellCls`, `cellLive`, `cellNext`, `fitCell`/`fitCells`, `toolbarHTML`, `boardHTML`, `metaHTML`, íconos `ic`/`IC`, teclado de la grilla, CSS de `.cell`, `.copen`, `.ntk`, `.bd-top`, `.stats`, `.gprog`, `.tabsrow`, `.tab`, `.bdg`. Ya no se usan `inspHTML`, `scrollInsp` ni el CSS `.insp` (ver Conocido). Texto del inicio que nombra la pestaña Hoy pasa a "Tus tareas para hoy".
