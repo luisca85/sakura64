@@ -17,6 +17,7 @@
   las dos apariciones de un pilar sin redibujar), `cellNext` (Enter), `fitCells`.
 - Paneles por casilla: `openDet`, `detHTML`, `detNavHTML`, `detSib`; estado `S.det`;
   historial con `history.pushState({det, b})` y `popstate`.
+- Información legal: `LEGAL` (Privacidad, Términos, Créditos), `legalHTML`, vista `S.view='legal'` con `S.legal`; se llega desde los links del pie (`footHTML`). `TBD()` marca los datos que faltan.
 - Piezas compartidas: `tipHTML` (tooltips), `wcellHTML` (casilla editable de bloque),
   `GCOL`/`gcs()` (color del objetivo), `ic`/`IC` (íconos).
 - Render: `render()` redibuja todo `#app` preservando foco y selección;

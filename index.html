@@ -89,6 +89,21 @@ button{cursor:pointer}
 .mini .m-tint{background:color-mix(in srgb,var(--pc) 32%,var(--surface))}
 .mini .m-win{background:var(--pc)}
 .foot{padding-block:28px 48px;color:var(--muted);font-size:14px;max-width:80ch}
+/* legal */
+.legal{padding-block:20px 40px;max-width:860px}
+.legal-draft{padding:10px 14px;border-radius:12px;border:1px dashed color-mix(in srgb,var(--p3) 60%,var(--line));background:color-mix(in srgb,var(--p3) 10%,var(--surface));font-size:14px;margin-bottom:16px}
+.legal-nav{display:flex;flex-wrap:wrap;gap:2px;border-bottom:1px solid var(--line2);margin-bottom:22px}
+.legal-nav .tab[aria-current="page"]{color:var(--ink)}
+.legal-nav .tab[aria-current="page"]::after{background:var(--ink)}
+.legal-body{max-width:68ch}
+.legal-body h1{font-size:clamp(26px,3.4vw,34px);margin-bottom:10px}
+.legal-body h2{font-size:18px;margin:22px 0 6px}
+.legal-body p{margin-bottom:8px;line-height:1.6}
+.legal-body code{font-size:.92em;background:var(--surface2);padding:1px 5px;border-radius:5px}
+mark.tbd{background:color-mix(in srgb,#F5C518 45%,var(--surface));color:var(--ink);padding:1px 4px;border-radius:4px;font-size:.92em}
+.foot-links{display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:8px}
+.foot-links button{background:none;border:0;padding:4px 0;color:var(--muted);font-weight:700;font-size:13px;text-decoration:underline;text-underline-offset:3px}
+.foot-links button:hover{color:var(--ink)}
 
 /* board header */
 .bd{padding-block:12px 48px}
@@ -588,8 +603,42 @@ function barHTML(){
     '<button class="iconbtn" data-act="theme" data-fid="theme" aria-label="Cambiar entre tema claro y oscuro">'+(isDark()?sun:moon)+'</button>'+
     '</div></header>';
 }
+const TBD=t=>'<mark class="tbd">[A COMPLETAR: '+t+']</mark>';
+const LEGAL={
+  privacidad:['Privacidad',()=>
+    '<p class="lead">Resumen: lo que escribís en tus tableros se queda en tu navegador. No tenemos servidor, cuentas, cookies, analítica ni publicidad, y no vendemos ni compartimos datos.</p>'+
+    '<h2>Qué datos se usan</h2><p>El objetivo, los pilares, las acciones y las tareas que escribís, el color y la fecha meta que elegís, y si ya viste la introducción.</p>'+
+    '<h2>Dónde se guardan y por cuánto tiempo</h2><p>Solo en tu navegador, en el almacenamiento de sesión (<code>sessionStorage</code>). No se envían a ningún servidor nuestro. Se borran cuando cerrás la pestaña. Para conservarlos, exportá el PDF o copiá el resumen.</p>'+
+    '<h2>PDF y resumen en texto</h2><p>Se generan en tu dispositivo. El archivo queda en tu carpeta de descargas y nadie más lo recibe.</p>'+
+    '<h2>Servicios de terceros</h2><p>Las tipografías se cargan desde Google Fonts. Para eso tu navegador se conecta a servidores de Google, que reciben datos técnicos como tu dirección IP y el navegador que usás. Google los trata según su propia política de privacidad. Si las fuentes no cargan, la app usa las del sistema.</p>'+
+    '<h2>Tus derechos</h2><p>Como no guardamos datos tuyos, no hay nada nuestro que consultar, corregir o eliminar: cerrar la pestaña borra todo. Si tenés dudas, escribinos a '+TBD('correo de contacto')+'.</p>'+
+    '<h2>Responsable</h2><p>'+TBD('nombre o razón social de Uxuaria, país y domicilio')+'.</p>'+
+    '<p class="note">Última actualización: '+TBD('fecha')+'.</p>'],
+  terminos:['Términos de uso',()=>
+    '<p class="lead">Resumen: es una herramienta gratuita y sin fines comerciales para organizar un objetivo personal. Usala bajo tu responsabilidad y guardá tu trabajo en PDF.</p>'+
+    '<h2>Gratuita y sin fines comerciales</h2><p>SAKURA 64 es gratuita y no tiene propósitos comerciales: no se cobra, no muestra publicidad, no vende ni comparte datos y no ofrece productos ni servicios pagos.</p>'+
+    '<h2>Qué es y qué no es</h2><p>SAKURA 64 ayuda a ordenar un objetivo en pilares, acciones y tareas. Es una herramienta de organización personal. No es asesoramiento profesional de ningún tipo (psicológico, médico, financiero, legal ni laboral).</p>'+
+    '<h2>Sin garantías</h2><p>Se ofrece tal como está, sin garantías de funcionamiento continuo ni de resultados. Como los tableros se borran al cerrar la pestaña, no respondemos por pérdidas de información: exportá lo que quieras conservar.</p>'+
+    '<h2>Tu contenido</h2><p>Lo que escribís es tuyo. Te pedimos que no cargues datos sensibles de otras personas.</p>'+
+    '<h2>Inspiración</h2><p>La grilla de un objetivo, 8 pilares y 64 acciones se inspira en el método Harada, creado por el docente japonés Takashi Harada. SAKURA 64 es una herramienta independiente: no está afiliada, patrocinada ni respaldada por él ni por organizaciones que enseñan el método. '+TBD('confirmar con asesoría legal que esta mención como inspiración es adecuada')+'</p>'+
+    '<h2>Propiedad del sitio</h2><p>El diseño y el código del sitio pertenecen a '+TBD('titular')+'. Las bibliotecas y tipografías de terceros mantienen sus licencias (ver Créditos).</p>'+
+    '<h2>Ley aplicable</h2><p>'+TBD('ley y jurisdicción aplicables')+'.</p>'+
+    '<p class="note">Última actualización: '+TBD('fecha')+'.</p>'],
+  creditos:['Créditos y licencias',()=>
+    '<p class="lead">Software y recursos de terceros que usa la app.</p>'+
+    '<h2>jsPDF 2.5.1</h2><p>Genera el PDF en tu navegador. Licencia MIT. Copyright (c) 2010-2021 James Hall, yWorks GmbH y colaboradores. Se incluye en <code>vendor/jspdf.umd.min.js</code> con su aviso de licencia.</p>'+
+    '<h2>Tipografías</h2><p>Bricolage Grotesque y Atkinson Hyperlegible, servidas por Google Fonts. '+TBD('confirmar la licencia de cada una (SIL Open Font License 1.1 según Google Fonts)')+'</p>'+
+    '<h2>Tablero de ejemplo</h2><p>Los datos del ejemplo de la panadería son inventados.</p>']
+};
+function legalHTML(){
+  const k=LEGAL[S.legal]?S.legal:'privacidad';
+  return '<section class="wrap legal"><div class="legal-draft" role="note"><b>Borrador.</b> Texto para revisar con asesoría legal antes de publicar. Lo marcado en amarillo falta completar.</div>'+
+    '<nav class="legal-nav" aria-label="Información legal">'+Object.keys(LEGAL).map(x=>'<button class="tab" aria-current="'+(x===k?'page':'false')+'" data-act="legal" data-v="'+x+'" data-fid="lg-'+x+'">'+LEGAL[x][0]+'</button>').join('')+'</nav>'+
+    '<article class="legal-body"><h1>'+LEGAL[k][0]+'</h1>'+LEGAL[k][1]()+'</article></section>';
+}
 function footHTML(){
-  return '<footer class="wrap foot"><p>Prueba de concepto para lectores del boletín. Tus tableros viven en esta sesión del navegador y se borran al cerrar la pestaña. Exportá a PDF lo que quieras guardar.</p></footer>';
+  return '<footer class="wrap foot"><p>SAKURA 64 es una herramienta gratuita y sin fines comerciales. Tus tableros viven en esta sesión del navegador y se borran al cerrar la pestaña. Exportá a PDF lo que quieras guardar.</p>'+
+    '<nav class="foot-links" aria-label="Legales"><button data-act="legal" data-v="privacidad" data-fid="ft-priv">Privacidad</button><button data-act="legal" data-v="terminos" data-fid="ft-term">Términos de uso</button><button data-act="legal" data-v="creditos" data-fid="ft-cred">Créditos y licencias</button></nav></footer>';
 }
 function miniHTML(b){
   let h='<div class="mini" aria-hidden="true">';
@@ -1038,7 +1087,7 @@ function render(opts){
   else{
     const b=cur();
     if(S.view==='board'&&!b)S.view='home';
-    html=barHTML()+(S.view==='home'?homeHTML():S.view==='wiz'?wizHTML():boardHTML(b))+footHTML();
+    html=barHTML()+(S.view==='home'?homeHTML():S.view==='wiz'?wizHTML():S.view==='legal'?legalHTML():boardHTML(b))+footHTML();
   }
   app.innerHTML=html;
   fitCells();
@@ -1207,6 +1256,7 @@ async function exportPDF(){
 /* ---------- actions ---------- */
 const A={
   home(){S.view='home';render({top:true});},
+  legal(el){S.view='legal';S.legal=el.dataset.v;render({top:true});},
   onb(){S.view='onb';S.onb=0;render({top:true});},
   'onb-next'(){S.onb=Math.min(3,S.onb+1);updateOnb();},
   'onb-back'(){S.onb=Math.max(0,S.onb-1);updateOnb();},
