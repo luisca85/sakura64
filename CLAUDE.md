@@ -1,6 +1,6 @@
-# Tablero Harada
+# SAKURA 64
 
-Aplicación web de una sola página para armar un tablero del método Harada. Público objetivo: lectores de habla hispana de LATAM que prueban la herramienta desde un link público.
+Aplicación web de una sola página (SAKURA 64) para armar un tablero de 64 acciones inspirado en el método Harada. Público objetivo: lectores de habla hispana de LATAM que prueban la herramienta desde un link público.
 
 ## Estructura
 

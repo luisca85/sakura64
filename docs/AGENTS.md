@@ -1,7 +1,7 @@
-# Constitución de Tablero Harada
+# Constitución de SAKURA 64
 
-Propósito: micro app web de una sola página para armar un tablero del método
-Harada (1 objetivo, 8 pilares, 64 acciones), convertir acciones en tareas
+Propósito: SAKURA 64, micro app web de una sola página para armar un tablero
+inspirado en el método Harada (1 objetivo, 8 pilares, 64 acciones), convertir acciones en tareas
 recurrentes y llevarse el resultado en PDF. Público: lectores hispanohablantes de
 LATAM que la prueban desde un link público de Uxuaria.
 

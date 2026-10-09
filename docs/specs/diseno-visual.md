@@ -43,7 +43,7 @@ Estados (UI): sin cambios de comportamiento. Si Noto Sans JP no carga, se usan l
 Diseño: referencia https://choooodoii.com/ ; íconos https://www.figma.com/design/JNMYB81luFx3U7mWFqVyg3/Japan-Icons--Community- (node 0:1). Prototipo aprobado en la rama `explorar/diseno-visual`.
 A CONFIRMAR:
   - Licencia y autor del set "Japan Icons (Community)" y el crédito que exige; sumarlo a "Créditos y licencias" de `legales.md` antes de publicar.
-  - Orden de construcción frente a `legales.md`: las dos ramas tocan el mismo `index.html` (nombre "Objetivo 64", pie, página legal); hay que integrarlas sin perder ninguna.
+  - Orden de construcción frente a `legales.md`: las dos ramas tocan el mismo `index.html` (nombre "SAKURA 64", pie, página legal); hay que integrarlas sin perder ninguna.
   - Si el ícono de cada tarjeta se guarda como dato del tablero (hoy depende de su posición en la lista y cambia si se elimina uno anterior).
   - Si la flor de sakura se saca de la lista de íconos de tarjeta para no repetir el logo.
   - Si la página legal también usa el patrón de subheader.

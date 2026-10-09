@@ -1,5 +1,5 @@
 # Feature: Publicación en Uxuaria  ·  id: pub
-Historia de usuario: Como editor de Uxuaria, quiero publicar el Tablero Harada en un link público estable, para que los lectores de LATAM lo prueben.
+Historia de usuario: Como editor de Uxuaria, quiero publicar SAKURA 64 en un link público estable, para que los lectores de LATAM lo prueben.
 Objetivo: dejar la micro app servida como sitio estático bajo Uxuaria, con textos, metadatos y avisos acordes a una pieza publicada (hoy dice "prueba de concepto para lectores del boletín").
 Criterios de aceptación:
   - Dado el link público, cuando lo abro en una pestaña nueva, entonces veo el onboarding y todo el test de regresión del AGENTS.md pasa.

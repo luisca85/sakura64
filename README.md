@@ -1,6 +1,6 @@
-# Tablero Harada
+# SAKURA 64
 
-Herramienta web para armar un tablero del método Harada: un objetivo ambicioso, 8 pilares y 8 acciones por pilar (64 acciones), con tareas recurrentes y exportación a PDF. Es una prueba de concepto para los lectores del boletín.
+Herramienta web para armar un tablero de 64 acciones inspirado en el método Harada: un objetivo ambicioso, 8 pilares y 8 acciones por pilar (64 acciones), con tareas recurrentes y exportación a PDF. Es una prueba de concepto para los lectores del boletín.
 
 Es un sitio estático. No tiene build, ni servidor, ni base de datos. Los tableros viven en el navegador de cada persona durante la sesión.
 
