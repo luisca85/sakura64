@@ -10,8 +10,8 @@ PDF
   - Dado un texto con comillas tipográficas, rayas o emojis, cuando exporto, entonces no hay caracteres rotos (`L()`), y los colores de pilar y su texto salen de `PHEX` y `PFG`.
   - Dado que el generador de PDF no cargó o falla, cuando exporto, entonces aparece un aviso y no se rompe la pantalla.
 Personaje
-  - Dada cualquier pantalla de tablero, cuando la miro, entonces abajo a la derecha hay un personaje fijo (cabeza rosa, cuerpo violeta) que da saltitos, con una nube "Descargar PDF" arriba; con `prefers-reduced-motion` no salta.
-  - Dada la sesión sin suscripción, cuando toco el personaje (o "Exportar PDF"), entonces la nube se agranda con "Antes de descargar", el campo "Tu correo", la casilla de aceptación y "Suscribirme y descargar".
+  - Dada cualquier pantalla de tablero, cuando la miro, entonces abajo a la derecha hay un personaje fijo (cabeza rosa, cuerpo violeta) que da saltitos, con una nube arriba que explica la descarga y lleva el link "Descargar mi tablero" (ver `panel-de-tareas.md`); con `prefers-reduced-motion` no salta.
+  - Dada la sesión sin suscripción, cuando toco el personaje, la nube o su link "Descargar mi tablero" (o "Descargar PDF" en "Mi avance"), entonces la nube se agranda con "Antes de descargar", el campo "Tu correo", la casilla de aceptación y "Suscribirme y descargar".
   - Dado el formulario, cuando envío un correo inválido o sin marcar la casilla, entonces veo el error y no se envía nada.
   - Dado un correo válido y la casilla marcada, cuando envío, entonces el botón dice "Enviando…", el correo va al formulario público de Brevo, la nube dice "¡Gracias por suscribirte! Tu PDF se está descargando." y se descarga el PDF.
   - Dado un error de red al enviar, cuando falla, entonces veo un mensaje de error y puedo reintentar.

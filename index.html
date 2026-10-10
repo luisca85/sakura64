@@ -205,6 +205,8 @@ button{cursor:pointer}
 .bd{padding-bottom:140px}
 @media (max-width:520px){.mascot{right:10px;bottom:10px}.mc-btn{width:60px;height:68px}.mc-bub{font-size:13px;padding:6px 11px;max-width:190px}}
 .mc-full{display:block}
+.mc-dl{display:inline-block;margin-top:6px;padding:2px 0;border:0;background:none;font:700 12px var(--f-body);color:var(--accent);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.mc-bub.min .mc-dl{display:none}
 .mc-bx,.mc-open{display:none}
 @media (max-width:640px){
   .mc-bub{padding-right:30px}
@@ -1532,6 +1534,7 @@ function mascotHTML(){
   else if(m==='done')bub='<div class="mc-card mc-done" role="status"><button type="button" class="mc-x" data-act="mascot-close" data-fid="mc-x" aria-label="Cerrar">×</button><p class="mc-t">¡Gracias por suscribirte!</p><p class="mc-p">Tu PDF se está descargando.</p></div>';
   else bub='<div class="mc-bub'+(S.bubMin?' min':'')+'"'+(S.bubMin?'':' data-act="mascot"')+'><span class="mc-jp" lang="ja" aria-hidden="true">頑張って！</span>'+
     '<span class="mc-full" aria-hidden="true">Llevate tu tablero, tus tareas y tu avance en un PDF<span class="mc-note">No lo guardamos en ningún servidor: al cerrar la pestaña, se borra.</span></span>'+
+    '<button type="button" class="mc-dl" data-act="mascot" data-fid="mc-dl">Descargar mi tablero</button>'+
     '<button type="button" class="mc-bx" data-act="bub-min" data-fid="bub-min" aria-label="Cerrar mensaje">×</button>'+
     '<button type="button" class="mc-open" data-act="bub-max" data-fid="bub-max" aria-label="Abrir mensaje: descargar tu tablero SAKURA 64"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div>';
   return '<div class="mascot'+(m!=='idle'?' open':'')+'">'+bub+
