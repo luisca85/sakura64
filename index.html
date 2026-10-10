@@ -467,6 +467,12 @@ th{font-size:13px;color:var(--muted)}
 .exchip{border:1px solid var(--line);background:var(--surface);border-radius:2px;padding:4px 10px;min-height:32px;font-size:13px;font-weight:500}
 .wbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
 .wgrid{display:grid;grid-template-columns:minmax(280px,min(540px,calc(100vh - 290px))) minmax(0,1fr);gap:32px;align-items:start}
+@media (min-width:821px){
+  .wiz .wgrid{grid-template-columns:minmax(280px,min(calc(50% - 12px),calc(100vh - 290px))) minmax(0,520px);gap:24px;justify-content:center}
+  .wiz .wstage{max-width:none}
+  .wiz .wside{background:var(--surface);border:1px solid var(--line2);border-radius:6px;padding:22px 22px 0;gap:16px}
+  .wiz .wbtns{margin:4px -22px 0;padding:14px 22px;border-top:1px solid var(--line2);justify-content:flex-end}
+}
 @media (max-width:820px){.wgrid{grid-template-columns:minmax(0,1fr);gap:22px}}
 .wstage{width:100%;min-width:0}
 @media (max-width:820px){.wstage{max-width:100%;min-width:0}.wgoal{max-width:100%;min-width:0;aspect-ratio:4/3}.wc textarea{padding:14% 4px 4px;font-size:12px}}
@@ -509,7 +515,7 @@ th{font-size:13px;color:var(--muted)}
 .onb{display:flex;flex-direction:column;padding-block:16px 40px;min-height:100vh}
 .onb-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
 .onb-body{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;align-items:center;flex:1}
-@media (min-width:860px){.onb-body{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px}}
+@media (min-width:860px){.onb-body{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start;align-content:center}}
 .stage-wrap{display:flex;justify-content:center}
 .sc{border-radius:4px;background:var(--line2);transform:scale(.7);transition:background-color .5s ease,transform .5s ease}
 .sc.lit{background:var(--c);transform:scale(1)}
@@ -517,6 +523,12 @@ th{font-size:13px;color:var(--muted)}
 .onb-copy{display:flex;flex-direction:column;gap:14px;max-width:520px}
 .onb-x{min-height:84px}
 .onb-btns{display:flex;flex-wrap:wrap;gap:8px}
+.onb-btns.od{justify-content:flex-start;align-items:center;gap:10px;margin-top:8px}
+.od-1{min-height:46px;padding:10px 22px;font-size:16px;background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.od-1:hover{background:color-mix(in srgb,var(--accent) 88%,#000)}
+.od-2{min-height:46px;padding:10px 18px;font-size:15px;background:var(--surface);border:1px solid var(--ink);color:var(--ink)}
+.od-3{margin-left:22px;padding:6px 0;border:0;background:none;font-size:14px;font-weight:500;color:var(--muted);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.od-3:hover{color:var(--ink)}
 .onb-page{min-height:100vh;border-bottom:0}
 .stage{display:grid;grid-template-columns:repeat(9,1fr);gap:4px;width:min(100%,460px);aspect-ratio:1/1;padding:12px;background:var(--surface);border:1px solid var(--line);border-radius:2px}
 .onb-copy>p{font-size:15px;color:var(--ink)}
@@ -1280,11 +1292,11 @@ function updateOnb(){
   $('#onb-h').textContent=s.h;$('#onb-p').textContent=s.p;$('#onb-x').innerHTML=s.x();
   $('#dots').innerHTML=ONB.map((x,i)=>'<button class="wst'+(i===st?' cur':'')+'" data-act="onb-go" data-v="'+i+'" data-fid="dot-'+i+'" aria-label="Paso '+(i+1)+' de 4: '+x.n+'"'+(i===st?' aria-current="step"':'')+'><b>'+(i+1)+'</b>'+jicon(x.ic,16)+x.n+'</button>').join('');
   let b='';
-  if(st>0)b+='<button class="btn" data-act="onb-back" data-fid="ob-back">Atrás</button>';
-  if(st<3)b+='<button class="btn primary" data-act="onb-next" data-fid="ob-next">Siguiente</button>';
-  else b+='<button class="btn primary" data-act="onb-create" data-fid="ob-create">Crear mi tablero</button><button class="btn" data-act="onb-example" data-fid="ob-ex">Ver el ejemplo</button>';
-  $('#onb-btns').innerHTML=b;
-  const nx=$('#onb-btns .primary');if(nx&&st>0)nx.focus({preventScroll:true});
+  if(st>0)b+='<button class="btn od-2" data-act="onb-back" data-fid="ob-back">‹ Atrás</button>';
+  if(st<3)b+='<button class="btn od-1" data-act="onb-next" data-fid="ob-next">Siguiente →</button>';
+  else b+='<button class="btn od-1" data-act="onb-create" data-fid="ob-create">Crear mi tablero →</button><button class="od-3" data-act="onb-example" data-fid="ob-ex">Ver el ejemplo</button>';
+  const ob=$('#onb-btns');ob.classList.add('od');ob.innerHTML=b;
+  const nx=$('#onb-btns .od-1');if(nx&&st>0)nx.focus({preventScroll:true});
     return;
   }
   $('#onb-h').textContent=s.h;$('#onb-p').textContent=s.p;$('#onb-x').innerHTML=s.x()+(st===3?'<button class="lnk onb-ex" data-act="onb-example" data-fid="ob-ex">Ver el ejemplo</button>':'');

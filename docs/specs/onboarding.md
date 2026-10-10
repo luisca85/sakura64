@@ -10,5 +10,5 @@ Alcance: `onbHTML`, `ONB`, `updateOnb`, acciones `onb-*`, `markSeen`.
 Fuera de alcance / No tocar: contenido del ejemplo (`EX`).
 Dependencias: `cellAt`, `EX`, `sessionStorage`.
 Estados (UI): sin storage disponible se muestra siempre (no rompe). Sin carga ni error de red.
-Diseño: N/A. En celular (hasta 859px) el diseño cambia; ver `ajustes-movil.md`.
+Diseño: N/A. En celular (hasta 859px) el diseño cambia; ver `ajustes-movil.md`. Botones y alineación de escritorio en `ajustes-escritorio.md`.
 Definición de hecho: la del AGENTS.md.

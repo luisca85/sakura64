@@ -26,7 +26,7 @@ Alcance: `wizHTML`, `wizSync`, `wizCounts`, `wcellHTML`, `wstaticHTML`, `tipHTML
 Fuera de alcance / No tocar: la grilla del Mapa y los paneles por casilla (`mapa.md`, `panel-casilla.md`), el onboarding animado, la persistencia (`sessionStorage`, `harada-v1`).
 Dependencias: `blankBoard` (suma `goalColor: ''`), `cellAt`/`NEI`, `PHEX` y `--p1`..`--p8`, `buildPDF`/`rgb()`, `openBoard`, `save`, `render`, y la grilla editable de `mapa.md` para cargar las acciones.
 Estados (UI): vacío = botones deshabilitados y textos de ayuda en gris. Sin carga ni error (todo es local). Tableros guardados sin `goalColor` usan el color por defecto.
-Diseño: N/A (aprobado en la rama `explorar/onboarding`, commits 82a060f y 5f34e4b).
+Diseño: N/A (aprobado en la rama `explorar/onboarding`, commits 82a060f y 5f34e4b). Distribución de escritorio (tarjeta, columnas centradas) en `ajustes-escritorio.md`.
 Paleta de colores del objetivo: Blanco (sin color, borde de tinta), Granate #9E2A2B, Bosque #1D5C4D, Índigo #3E2C7A, Ámbar #8A5A0B y Petróleo #0E5A73.
 Definición de hecho: la del AGENTS.md, más:
   - Recorrer los 2 pasos con teclado solo (Tab, Enter) y con mouse, en 1240px y en 375px, en claro y en oscuro.
