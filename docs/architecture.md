@@ -23,6 +23,7 @@
 - Color: `--p1`..`--p8` y `PHEX` (pilares), `--f1`..`--f8` y `PFG` (texto sobre cada pilar), `pfv(k)`; acento `--accent` magenta.
 - Piezas compartidas: `tipHTML` (tooltips), `wcellHTML` (casilla editable de bloque),
   `GCOL`/`gcs()` (color del objetivo), `ic`/`IC` (íconos de interfaz), `bubbleHTML` (globos de ayuda), `cardHTML` (tarjetas del inicio).
+- Bloque SEO: `#about` (estático en el HTML, fuera de `#app`, referencia `ABOUT`). `render()` lo inserta antes del pie en inicio, lo deja después de `#app` en onboarding (clase `after-onb` para no quedar bajo el botón fijo de celular) y lo oculta en el resto de las vistas.
 - Render: `render()` redibuja todo `#app` preservando foco y selección;
   `patch()` actualiza solo grilla y métricas mientras se escribe; `toast()` con deshacer.
 - Exportación: `buildPDF` / `exportPDF` (jsPDF, 3 páginas A4 apaisadas: tablero,
@@ -40,6 +41,7 @@
 ## Dónde vive cada cosa
 - `index.html`: toda la app.
 - `vendor/jspdf.umd.min.js`: jsPDF 2.5.1 local, para no depender de una CDN.
+- `404.html`: página de error con `noindex`, sin dependencias.
 - `README.md`: cómo probar y publicar. `CLAUDE.md`: contexto para el agente.
 - `docs/`: esta documentación spec-lite.
 

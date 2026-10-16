@@ -6,6 +6,8 @@ Aplicación web de una sola página (SAKURA 64) para armar un tablero de 64 acci
 
 - Todo vive en `index.html`: CSS, marcado inicial y un único `<script>` (IIFE, JavaScript sin framework).
 - `vendor/jspdf.umd.min.js` genera el PDF en el navegador.
+- `#about` en `index.html` es un bloque estático para buscadores (qué es el método, pasos y preguntas frecuentes). Vive fuera de `#app` y `render()` lo muestra solo en onboarding e inicio (antes del pie). Si cambia lo que hace la app, revisá que ese texto siga siendo cierto.
+- `404.html` es la página de error; Cloudflare Pages la sirve con estado 404 para rutas que no existen.
 - No hay build. Para probar, abrí el archivo o usá `python3 -m http.server`.
 
 ## Modelo de datos
