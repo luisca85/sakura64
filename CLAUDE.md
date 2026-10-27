@@ -24,7 +24,7 @@ Un tablero es un objeto: `goal`, `goalDate`, `pillars[8]` (texto), `actions[8][8
 - Exportar a PDF es la forma de conservar el resultado. También hay "Copiar resumen como texto".
 - El tablero de ejemplo (`id: ejemplo`) usa datos inventados y no se puede eliminar, solo duplicar.
 - Los datos no salen del navegador de cada persona.
-- Las visitas se miden con Cloudflare Web Analytics (sin cookies), activado desde el panel de Cloudflare Pages: el script lo inyecta Cloudflare y no está en el repo. No sumar analytics con cookies.
+- Las visitas se miden con Cloudflare Web Analytics (sin cookies): el script con su token está al final de `index.html`, porque la inyección automática de Cloudflare falló. No sumar analytics con cookies.
 
 ## Convenciones
 

@@ -12,8 +12,7 @@ LATAM que la prueban desde un link público de Uxuaria.
 - Privacidad: los tableros no salen del navegador. Nada de servicios de terceros
   que reciban contenido del tablero ni de analytics con cookies. Cargas externas
   permitidas: Google Fonts (con fuente del sistema de respaldo), Cloudflare Web
-  Analytics (visitas anónimas, sin cookies, activado desde el panel de Cloudflare
-  Pages) y el envío del correo al formulario público de Brevo cuando la persona se
+  Analytics (visitas anónimas, sin cookies, script al final de `index.html`) y el envío del correo al formulario público de Brevo cuando la persona se
   suscribe para descargar el PDF. Nunca una clave de API en el sitio.
 - Persistencia efímera a propósito: `sessionStorage` (`harada-v1`, `harada-seen`,
   `harada-sub`).
